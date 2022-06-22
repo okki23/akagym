@@ -17,7 +17,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url('assets/backend/'); ?>dist/css/adminlte.min.css"> 
 </head>
-<body class="hold-transition login-page" style="background-color:#A2CC81;"> 
+<body class="hold-transition login-page" style="background-color:#CCCDD2;"> 
 <div align="center">
     <img src="<?php echo base_url('assets/backend/dist/img/akalogo.png'); ?>" style="width:60%; margin-bottom:40px;" alt="">
 </div> 

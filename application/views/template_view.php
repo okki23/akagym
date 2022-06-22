@@ -31,7 +31,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo base_url('assets/backend/'); ?>dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="" src="<?php echo base_url('assets/backend/'); ?>dist/img/akalogo.png" alt="AdminLTELogo" height="280" width="440">
   </div>
 
   <!-- Navbar -->
@@ -50,7 +50,7 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i> &nbsp; Administrator
+          <i class="far fa-user"></i> &nbsp; <?php echo $this->session->userdata('username'); ?> 
           <!-- <span class="badge badge-warning navbar-badge">15</span> -->
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"> 
