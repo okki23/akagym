@@ -34991,7 +34991,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 @media (max-width: 576px) {
   .login-box,
   .register-box {
-    margin-top: .5rem;
+    margin-top: .3rem;
     width: 90%;
   }
 }
