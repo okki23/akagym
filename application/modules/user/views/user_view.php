@@ -1,50 +1,37 @@
- 
-    <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                 
+<div class="row">
+          <div class="col-12">
+          
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Listing Data User</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="fas fa-book-medical"></i> Tambah Data </a>
+            <br>
+            &nbsp;
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                      <tr> 
+                        <th style="width:20%;">Username</th>  
+                        <th style="width:20%;">Nama Pegawai</th>  
+                        <th style="width:10%;">Opsi</th> 
+                      </tr>
+                  </thead>  
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- Basic Examples -->
-            <div class="row clearfix">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                               Manajemen User
-                            </h2>
-                            <br>
-                            <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
- 
-                        </div>
-                        <div class="body">
-                                
-                            <div class="table-responsive">
-                               <table class="table table-bordered table-striped table-hover js-basic-example" id="example" >
-  
-                                    <thead>
-                                        <tr>
-                                           
-                                            <th style="width:5%;">Username</th>  
-                                            <th style="width:5%;">Nama Pegawai</th>  
-                                            <th style="width:10%;">Opsi</th> 
-                                        </tr>
-                                    </thead> 
-                                </table> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         
-
-
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
-    </section>
+        <!-- /.row -->
 
-   
+        
     <!-- form tambah dan ubah data -->
     <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="defaultModalLabel">Form Tambah Data</h4>
@@ -73,8 +60,7 @@
                                             <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
                                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" /> 
                                         </div>
-                                    </div>
-
+                                    </div> 
                                     <div class="form-group">
                                     
                                         <label> User Type  </label>
@@ -85,42 +71,36 @@
 
                                         <button type="button" id="userbtn" class="btn btn-default waves-effect "> User </button>
                                     
-                                    </div>
-                                 
+                                    </div>  
+                                   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
 
-                                   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
-
-                                   <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
+                                   <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
                              </form>
                        </div>
                      
                     </div>
                 </div>
     </div>
-
-    
-
+ 
     <!-- modal cari karyawan -->
     <div class="modal fade" id="CariKaryawanModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" >Cari Pegawai</h4>
                         </div>
                         <div class="modal-body">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
+ 
                                 <br>
-                                <hr>
-
+                                <hr> 
                                  <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_karyawan" >
-  
+   
                                     <thead>
                                         <tr>  
                                             <th style="width:98%;">NIP </th> 
                                             <th style="width:98%;">Nama </th> 
-                                         </tr>
-                                          
+                                         </tr> 
                                     </thead> 
                                     <tbody id="daftar_karyawan">
 
@@ -130,46 +110,36 @@
                      
                     </div>
                 </div>
-    </div>
-
- 
- 
-   <script type="text/javascript">
-    
-     $("#adminbtn").on("click",function(){
+    </div> 
+  <script> 
+    $("#adminbtn").on("click",function(){
         $("#level").val('1');
         $(this).attr('class','btn btn-primary');
-        $("#userbtn").attr('class','btn btn-default');
-
+        $("#userbtn").attr('class','btn btn-default'); 
     });
 
     $("#userbtn").on("click",function(){
         $("#level").val('2');
-       $(this).attr('class','btn btn-primary');
-        $("#adminbtn").attr('class','btn btn-default');
-
-         
-    });
-
-    function CariKaryawan(){
-        $("#CariKaryawanModal").modal({backdrop: 'static', keyboard: false,show:true});
-    } 
+        $(this).attr('class','btn btn-primary');
+        $("#adminbtn").attr('class','btn btn-default');  
+    }); 
+   
     $('#daftar_karyawan').DataTable( {
-            "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
+        "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
     });
 
     var daftar_karyawan = $('#daftar_karyawan').DataTable();
      
-     $('#daftar_karyawan tbody').on('click', 'tr', function () {
+    $('#daftar_karyawan tbody').on('click', 'tr', function () {
          
          var content = daftar_karyawan.row(this).data()
          console.log(content);
          $("#nama_pegawai").val(content[1]);
          $("#id_pegawai").val(content[4]);
          $("#CariKaryawanModal").modal('hide');
-     } );
+    });
        
-     function Ubah_Data(id){
+    function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
         $("#defaultModal").modal('show');
  
@@ -194,22 +164,15 @@
                  }
              }
          });
-     }
+    }
  
-     function Bersihkan_Form(){
+    function Bersihkan_Form(){
         $(':input').val(''); 
-     }
-
-     function CariAdminPPPU(){
-        $("#ModalCariAdminPPPU").modal({backdrop: 'static', keyboard: false,show:true});
-     }
-
-     
-
-     function Hapus_Data(id){
+    } 
+   
+    function Hapus_Data(id){
         if(confirm('Anda yakin ingin menghapus data ini?'))
-        {
-        // ajax delete data to database
+        { 
         $.ajax({
             url : "<?php echo base_url('user/hapus_data')?>/"+id,
             type: "GET",
@@ -217,46 +180,24 @@
             success: function(data)
             {
                
-               $('#example').DataTable().ajax.reload(); 
-               
-                $.notify("Data berhasil dihapus!", {
-                    animate: {
-                        enter: 'animated fadeInRight',
-                        exit: 'animated fadeOutRight'
-                    }  
-                 },{
-                    type: 'success'
-                    });
+               $('#example1').DataTable().ajax.reload(); 
+               toastr.success('Data Berhasil Dihapus');
+             
                  
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
                 alert('Error deleting data');
             }
-        });
+        }); 
+      }
+    } 
    
-    }
-    }
-    
-   
-    $('.thumbnail').on('click',function(){
-        $('.modal-body').empty();
-        var title = $(this).parent('a').attr("title");
-        $('.modal-title').html(title);
-        $($(this).parents('div').html()).appendTo('.modal-body');
-        $('#Prev').modal({show:true});
-    });
-  
-    function Simpan_Data(){
-        //setting semua data dalam form dijadikan 1 variabel 
-         var formData = new FormData($('#user_form')[0]); 
-
-          
-         //validasi form sebelum submit ke controller
+    function Simpan_Data(){ 
+         var formData = new FormData($('#user_form')[0]);  
+           
          var username = $("#username").val();
-        
-        
-          
+         
          if(username == ''){
             alert("Username Belum anda masukkan!");
             $("#username").parents('.form-line').addClass('focused error');
@@ -274,51 +215,58 @@
              success:function(result){ 
                 
                  $("#defaultModal").modal('hide');
-                 $('#example').DataTable().ajax.reload(); 
+                 $('#example1').DataTable().ajax.reload(); 
                  $('#user_form')[0].reset();
-                 
-                 $.notify("Data berhasil disimpan!", {
-                    animate: {
-                        enter: 'animated fadeInRight',
-                        exit: 'animated fadeOutRight'
-                 } 
-                 },{
-                    type: 'success'
-                });
+                 toastr.success('Data Berhasil Disimpan');
+              
              }
-            }); 
+            });  
+         } 
+    } 
 
-         }
-
-    }
-     
-
-     $('.datepicker').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD',
-        clearButton: true,
-        weekStart: 1,
-        time: false
-     });
-
-     
-       $(document).ready(function() {
-           
-        $("#addmodal").on("click",function(){
-            $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
-            $("#method").val('Add');
-            $("#defaultModalLabel").html("Form Tambah Data");
-        });
+    function CariKaryawan(){
+        $("#CariKaryawanModal").modal({backdrop: 'static', keyboard: false,show:true});
+    } 
+    $(document).ready(function() {
         
-         
-        $('#example').DataTable( {
-            "ajax": "<?php echo base_url(); ?>user/fetch_user" 
-        });
-
-       
-     
-         
-      });
-  
-        
-         
-    </script>
+           $("#addmodal").on("click",function(){
+               $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
+               $("#method").val('Add');
+               $("#defaultModalLabel").html("Form Tambah Data");
+           });
+             
+           $("#example1").DataTable({
+              "ajax":"<?php echo base_url(); ?>user/fetch_user",
+              "ordering": true,               // Allows ordering
+              "searching": true,              // Searchbox
+              "paging": true,                 // Pagination
+              "info": false,                  // Shows 'Showing X of X' information
+              "pagingType": 'simple_numbers', // Shows Previous, page numbers & next buttons only
+              "pageLength": 10,               // Defaults number of rows to display in table
+              "columnDefs": [
+                  {
+                      "targets": 'dialPlanButtons',
+                      "searchable": false,    // Stops search in the fields 
+                      "sorting": false,       // Stops sorting
+                      "orderable": false      // Stops ordering
+                  }
+              ],
+              "dom": '<"top"f>rt<"bottom"lp><"clear">', // Positions table elements
+              "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]], // Sets up the amount of records to display
+              "language": {
+                  "search": "_INPUT_",            // Removes the 'Search' field label
+                  "searchPlaceholder": "Search Here..."   // Placeholder for the search box
+              },
+              "search": {
+                  "addClass": 'form-control input-lg col-lg-12'
+              },
+              "fnDrawCallback":function(){
+                  $("input[type='search']").attr("id", "searchBox");
+                  $('#dialPlanListTable').css('cssText', "margin-top: 0px !important;");
+                  $("select[name='dialPlanListTable_length'], #searchBox").removeClass("input-sm");
+                  $('#searchBox').css("width", "200px").focus();
+                  $('#dialPlanListTable_filter').removeClass('dataTables_filter');
+              }
+          });  
+         }); 
+</script>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AKAGYM | Application System</title>
-
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url('assets/backend/'); ?>dist/img/akalogo.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -25,6 +25,55 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/backend/'); ?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url('assets/backend/'); ?>plugins/summernote/summernote-bs4.min.css">
+
+    <!-- jQuery -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+    $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/chart.js/Chart.min.js"></script>
+   
+    <link rel="stylesheet" href="<?php echo base_url('assets/backend/'); ?>plugins/toastr/toastr.min.css">
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/toastr/toastr.min.js"></script>
+    <!-- JQVMap -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/moment/moment.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo base_url('assets/backend/'); ?>dist/js/adminlte.js"></script>  
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- <script src="<?php echo base_url('assets/backend/'); ?>dist/js/pages/dashboard.js"></script> -->
+
+    <!-- DataTables  & Plugins -->
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/jszip/jszip.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -78,9 +127,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-    
-       
+      <!-- Sidebar user panel (optional) --> 
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -90,7 +137,7 @@
           
           <li class="nav-header">MASTER DATA</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="<?php echo base_url('measure'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
                 Ukuran 
@@ -98,7 +145,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="<?php echo base_url('user'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
                 User 
@@ -106,7 +153,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="<?php echo base_url('member'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+              <p>
+                Karyawan 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('member'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
                 Pelanggan 
@@ -115,7 +170,7 @@
           </li>
           <li class="nav-header">PERHITUNGAN</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="<?php echo base_url('calculate'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Perhitungan Sistem
@@ -141,7 +196,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <!-- <h1 class="m-0">Dashboard</h1> -->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
@@ -158,52 +213,12 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
 
-                <p>Pelanggan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3> 
-                <p>User</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3> 
-                <p>Perhitungan Sistem</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-         
-          <!-- ./col -->
-        </div>
+        <?php 
+           echo $this->load->view($konten);
+        ?>
+        
+      
         <!-- /.row -->
         <!-- Main row -->
         
@@ -215,8 +230,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; 2022 <a href="https://adminlte.io">AKAGYM.net</a>.</strong>
-    All rights reserved.
-    
+    All rights reserved. 
   </footer>
 
   <!-- Control Sidebar -->
@@ -227,37 +241,5 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/moment/moment.min.js"></script>
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="<?php echo base_url('assets/backend/'); ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url('assets/backend/'); ?>dist/js/adminlte.js"></script>  
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url('assets/backend/'); ?>dist/js/pages/dashboard.js"></script>
 </body>
 </html>
