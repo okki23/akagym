@@ -2,17 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 
-class Pegawai extends Parent_Controller {
+class Karyawan extends Parent_Controller {
   
 
-  var $nama_tabel = 'm_pegawai';
+  var $nama_tabel = 'm_karyawan';
   var $daftar_field = array('id','nip','nama','telp','alamat','email','id_jabatan');
   var $primary_key = 'id';
  
   
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_pegawai');
+ 		$this->load->model('m_karyawan');
  
 		if(!$this->session->userdata('username')){
 		   echo "<script language=javascript>
@@ -25,25 +25,25 @@ class Pegawai extends Parent_Controller {
   
 	public function index(){
 		$data['judul'] = $this->data['judul']; 
-		$data['konten'] = 'pegawai/pegawai_view';
+		$data['konten'] = 'karyawan/karyawan_view';
 		$this->load->view('template_view',$data);		
    
 	}
  
-  	public function fetch_pegawai(){  
-       $getdata = $this->m_pegawai->fetch_pegawai();
+  	public function fetch_karyawan(){  
+       $getdata = $this->m_karyawan->fetch_karyawan();
        echo json_encode($getdata);   
   	}  
 
-  	public function fetch_cat_pegawai(){  
-       $getdata = $this->m_pegawai->fetch_cat_pegawai();
+  	public function fetch_cat_karyawan(){  
+       $getdata = $this->m_karyawan->fetch_cat_karyawan();
        echo json_encode($getdata);   
   	} 
 	
    
 	public function get_data_edit(){
 		$id = $this->uri->segment(3); 
-		$sql = "select a.*,b.nama_jabatan from m_pegawai a
+		$sql = "select a.*,b.nama_jabatan from m_karyawan a
 		left join m_jabatan b on b.id = a.id_jabatan where a.id = '".$id."' "; 
 		$get = $this->db->query($sql)->row();
 		echo json_encode($get,TRUE);
@@ -51,7 +51,7 @@ class Pegawai extends Parent_Controller {
 	 
 	public function hapus_data(){
 		$id = $this->uri->segment(3);   
-    	$sqlhapus = $this->m_pegawai->hapus_data($id);
+    	$sqlhapus = $this->m_karyawan->hapus_data($id);
 		
 		if($sqlhapus){
 			$result = array("response"=>array('message'=>'success'));
@@ -65,12 +65,12 @@ class Pegawai extends Parent_Controller {
 	public function simpan_data(){
     
     
-    $data_form = $this->m_pegawai->array_from_post($this->daftar_field);
+    $data_form = $this->m_karyawan->array_from_post($this->daftar_field);
 
     $id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
 
-    $simpan_data = $this->m_pegawai->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
+    $simpan_data = $this->m_karyawan->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
     
 		if($simpan_data){
 			$result = array("response"=>array('message'=>'success'));
