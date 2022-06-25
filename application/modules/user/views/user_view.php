@@ -46,15 +46,13 @@
                                         </div>
                                     </div>
                                     <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="CariKaryawan();" class="btn btn-primary"> Pilih Pegawai ... </button>
-                                                </span>
-                                    </div>           
+                                        <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
+                                        <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
+                                        <span class="input-group-append">
+                                            <button type="button"  onclick="CariKaryawan();" class="btn btn-primary btn-flat">Pilih Karyawan...</button>
+                                        </span>
+                                    </div>
+                                  
                                     <div class="form-group">
                                         <div class="form-line">
                                             <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
@@ -72,6 +70,8 @@
                                         <button type="button" id="userbtn" class="btn btn-default waves-effect "> User </button>
                                     
                                     </div>  
+                                    <br>
+                                    <hr>
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
@@ -125,7 +125,7 @@
     }); 
    
     $('#daftar_karyawan').DataTable( {
-        "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
+        "ajax": "<?php echo base_url(); ?>karyawan/fetch_karyawan"           
     });
 
     var daftar_karyawan = $('#daftar_karyawan').DataTable();
@@ -135,7 +135,7 @@
          var content = daftar_karyawan.row(this).data()
          console.log(content);
          $("#nama_pegawai").val(content[1]);
-         $("#id_pegawai").val(content[4]);
+         $("#id_pegawai").val(content[6]);
          $("#CariKaryawanModal").modal('hide');
     });
        

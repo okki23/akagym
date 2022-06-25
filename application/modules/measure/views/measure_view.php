@@ -44,7 +44,8 @@
                                             <input type="text" name="ukuran" id="ukuran" class="form-control" placeholder="Ukuran" />
                                         </div>
                                     </div>
-                                     
+                                     <br>
+                                     <hr>
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>

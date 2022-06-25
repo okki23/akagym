@@ -80,7 +80,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="" src="<?php echo base_url('assets/backend/'); ?>dist/img/akalogo.png" alt="AdminLTELogo" height="280" width="440">
+    <img class="" src="<?php echo base_url('assets/backend/'); ?>dist/img/akalogo.png" alt="AdminLTELogo" height="280" width="540">
   </div>
 
   <!-- Navbar -->
@@ -122,7 +122,7 @@
  
     <a href="index3.html" class="brand-link">
       <img src="<?php echo base_url('assets/backend/dist/img/akalogo.png'); ?>" alt="AdminLTE Logo" class="brand-image  elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light"> &nbsp; </span>
+      <span class="brand-text font-weight-light"> AKAGYM</span>
     </a>
 
     <!-- Sidebar -->
@@ -161,6 +161,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?php echo base_url('jabatan'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+              <p>
+                Jabatan 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?php echo base_url('member'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
@@ -169,6 +177,15 @@
             </a>
           </li>
           <li class="nav-header">PERHITUNGAN</li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('params_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Setting Parameter
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="<?php echo base_url('calculate'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
