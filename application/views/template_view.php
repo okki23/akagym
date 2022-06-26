@@ -172,7 +172,7 @@
             <a href="<?php echo base_url('member'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
-                Pelanggan 
+                Member 
               </p>
             </a>
           </li>

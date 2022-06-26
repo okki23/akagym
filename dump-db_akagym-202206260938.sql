@@ -16,33 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `m_barang`
---
-
-DROP TABLE IF EXISTS `m_barang`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `m_barang` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nama_barang` varchar(255) DEFAULT NULL,
-  `id_kategori` varchar(255) DEFAULT NULL,
-  `keterangan` varchar(100) DEFAULT NULL,
-  `qty` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `m_barang`
---
-
-LOCK TABLES `m_barang` WRITE;
-/*!40000 ALTER TABLE `m_barang` DISABLE KEYS */;
-INSERT INTO `m_barang` VALUES (1,'Sabun','3','OK','8'),(3,'Kue','2','OK','10');
-/*!40000 ALTER TABLE `m_barang` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `m_jabatan`
 --
 
@@ -53,7 +26,7 @@ CREATE TABLE `m_jabatan` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_jabatan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +35,6 @@ CREATE TABLE `m_jabatan` (
 
 LOCK TABLES `m_jabatan` WRITE;
 /*!40000 ALTER TABLE `m_jabatan` DISABLE KEYS */;
-INSERT INTO `m_jabatan` VALUES (1,'Mandor'),(3,'Kenek');
 /*!40000 ALTER TABLE `m_jabatan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +58,7 @@ CREATE TABLE `m_karyawan` (
   `tinggi_badan` varchar(100) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,32 +67,7 @@ CREATE TABLE `m_karyawan` (
 
 LOCK TABLES `m_karyawan` WRITE;
 /*!40000 ALTER TABLE `m_karyawan` DISABLE KEYS */;
-INSERT INTO `m_karyawan` VALUES (1,'234324','Okki Setyawan','034234','Bekasi','okkisetyawan@gmail.com',1,NULL,NULL,NULL,NULL),(2,'8923423','Joni','0242349','Buaran','okkisetyawan@gmail.com',3,NULL,NULL,NULL,NULL),(3,'5665','Rudi','932834','Jakarta','rudi@mail.com',NULL,NULL,NULL,NULL,NULL),(5,'34224','Okki Jon','038234','Bekasi','okkisetyawan@gmail.com',3,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `m_karyawan` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `m_kategori`
---
-
-DROP TABLE IF EXISTS `m_kategori`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `m_kategori` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nama_kategori` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `m_kategori`
---
-
-LOCK TABLES `m_kategori` WRITE;
-/*!40000 ALTER TABLE `m_kategori` DISABLE KEYS */;
-INSERT INTO `m_kategori` VALUES (2,'Padat'),(3,'Cair');
-/*!40000 ALTER TABLE `m_kategori` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -134,7 +81,7 @@ CREATE TABLE `m_measure` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ukuran` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +90,6 @@ CREATE TABLE `m_measure` (
 
 LOCK TABLES `m_measure` WRITE;
 /*!40000 ALTER TABLE `m_measure` DISABLE KEYS */;
-INSERT INTO `m_measure` VALUES (7,'KG'),(8,'Percent'),(9,'Bpm'),(10,'Liter');
 /*!40000 ALTER TABLE `m_measure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,30 +131,6 @@ LOCK TABLES `m_member` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `m_sub_kategori`
---
-
-DROP TABLE IF EXISTS `m_sub_kategori`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `m_sub_kategori` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `id_kategori` int(10) DEFAULT NULL,
-  `nama_sub_kategori` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `m_sub_kategori`
---
-
-LOCK TABLES `m_sub_kategori` WRITE;
-/*!40000 ALTER TABLE `m_sub_kategori` DISABLE KEYS */;
-/*!40000 ALTER TABLE `m_sub_kategori` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `m_user`
 --
 
@@ -222,7 +144,7 @@ CREATE TABLE `m_user` (
   `id_pegawai` varchar(255) DEFAULT NULL,
   `level` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,64 +153,8 @@ CREATE TABLE `m_user` (
 
 LOCK TABLES `m_user` WRITE;
 /*!40000 ALTER TABLE `m_user` DISABLE KEYS */;
-INSERT INTO `m_user` VALUES (1,'admin','YQ==','99',1),(2,'rudi','YQ==','3',1),(3,'ruru','YQ==','3',1);
+INSERT INTO `m_user` VALUES (1,'admin','YQ==','5',1);
 /*!40000 ALTER TABLE `m_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `t_keluar`
---
-
-DROP TABLE IF EXISTS `t_keluar`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `t_keluar` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `id_barang` int(10) DEFAULT NULL,
-  `trans_out` int(10) DEFAULT NULL,
-  `keterangan` varchar(100) DEFAULT NULL,
-  `user_insert` int(10) DEFAULT NULL,
-  `date_insert` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `t_keluar`
---
-
-LOCK TABLES `t_keluar` WRITE;
-/*!40000 ALTER TABLE `t_keluar` DISABLE KEYS */;
-INSERT INTO `t_keluar` VALUES (1,1,5,'ok',3,'2021-09-15 08:50:33');
-/*!40000 ALTER TABLE `t_keluar` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `t_masuk`
---
-
-DROP TABLE IF EXISTS `t_masuk`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `t_masuk` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `id_barang` int(10) DEFAULT NULL,
-  `trans_in` int(10) DEFAULT NULL,
-  `keterangan` varchar(100) DEFAULT NULL,
-  `user_insert` int(10) DEFAULT NULL,
-  `date_insert` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `t_masuk`
---
-
-LOCK TABLES `t_masuk` WRITE;
-/*!40000 ALTER TABLE `t_masuk` DISABLE KEYS */;
-INSERT INTO `t_masuk` VALUES (1,1,10,'OK',1,'2021-09-10 15:53:23');
-/*!40000 ALTER TABLE `t_masuk` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -304,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-25  7:44:01
+-- Dump completed on 2022-06-26  9:38:32
