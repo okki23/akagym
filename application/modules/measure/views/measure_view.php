@@ -40,6 +40,7 @@
                                  
                                     <input type="hidden" name="id" id="id"> 
                                     <div class="form-group">
+                                        <label for="">Ukuran</label>
                                         <div class="form-line">
                                             <input type="text" name="ukuran" id="ukuran" class="form-control" placeholder="Ukuran" />
                                         </div>

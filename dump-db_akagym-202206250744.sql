@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.62, for Win64 (AMD64)
 --
--- Host: localhost    Database: db_siti
+-- Host: localhost    Database: db_akagym
 -- ------------------------------------------------------
 -- Server version	5.7.33
 
@@ -53,7 +53,7 @@ CREATE TABLE `m_jabatan` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_jabatan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +64,39 @@ LOCK TABLES `m_jabatan` WRITE;
 /*!40000 ALTER TABLE `m_jabatan` DISABLE KEYS */;
 INSERT INTO `m_jabatan` VALUES (1,'Mandor'),(3,'Kenek');
 /*!40000 ALTER TABLE `m_jabatan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `m_karyawan`
+--
+
+DROP TABLE IF EXISTS `m_karyawan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `m_karyawan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nip` varchar(50) DEFAULT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `telp` text,
+  `alamat` text,
+  `email` varchar(100) DEFAULT NULL,
+  `id_jabatan` int(10) DEFAULT NULL,
+  `jenkel` varchar(100) DEFAULT NULL,
+  `no_hp` text,
+  `tinggi_badan` varchar(100) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `m_karyawan`
+--
+
+LOCK TABLES `m_karyawan` WRITE;
+/*!40000 ALTER TABLE `m_karyawan` DISABLE KEYS */;
+INSERT INTO `m_karyawan` VALUES (1,'234324','Okki Setyawan','034234','Bekasi','okkisetyawan@gmail.com',1,NULL,NULL,NULL,NULL),(2,'8923423','Joni','0242349','Buaran','okkisetyawan@gmail.com',3,NULL,NULL,NULL,NULL),(3,'5665','Rudi','932834','Jakarta','rudi@mail.com',NULL,NULL,NULL,NULL,NULL),(5,'34224','Okki Jon','038234','Bekasi','okkisetyawan@gmail.com',3,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `m_karyawan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -91,33 +124,64 @@ INSERT INTO `m_kategori` VALUES (2,'Padat'),(3,'Cair');
 UNLOCK TABLES;
 
 --
--- Table structure for table `m_pegawai`
+-- Table structure for table `m_measure`
 --
 
-DROP TABLE IF EXISTS `m_pegawai`;
+DROP TABLE IF EXISTS `m_measure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `m_pegawai` (
+CREATE TABLE `m_measure` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nip` varchar(50) DEFAULT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  `telp` text,
-  `alamat` text,
-  `email` varchar(100) DEFAULT NULL,
-  `id_jabatan` int(10) DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
+  `ukuran` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `m_pegawai`
+-- Dumping data for table `m_measure`
 --
 
-LOCK TABLES `m_pegawai` WRITE;
-/*!40000 ALTER TABLE `m_pegawai` DISABLE KEYS */;
-INSERT INTO `m_pegawai` VALUES (1,'234324','Okki Setyawan','034234','Bekasi','okkisetyawan@gmail.com',1,NULL),(2,'8923423','Joni','0242349','Buaran','okkisetyawan@gmail.com',3,NULL),(3,'5665','Rudi','932834','Jakarta','rudi@mail.com',1,NULL);
-/*!40000 ALTER TABLE `m_pegawai` ENABLE KEYS */;
+LOCK TABLES `m_measure` WRITE;
+/*!40000 ALTER TABLE `m_measure` DISABLE KEYS */;
+INSERT INTO `m_measure` VALUES (7,'KG'),(8,'Percent'),(9,'Bpm'),(10,'Liter');
+/*!40000 ALTER TABLE `m_measure` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `m_member`
+--
+
+DROP TABLE IF EXISTS `m_member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `m_member` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `no_reg` varchar(100) DEFAULT NULL,
+  `tgl_daftar` date DEFAULT NULL,
+  `jenkel` varchar(10) DEFAULT NULL,
+  `telp` text,
+  `alamat` text,
+  `usia` varchar(10) DEFAULT NULL,
+  `tinggi` varchar(10) DEFAULT NULL,
+  `berat_badan` varchar(10) DEFAULT NULL,
+  `lemak_tubuh` varchar(10) DEFAULT NULL,
+  `kadar_air` varchar(10) DEFAULT NULL,
+  `masa_otot` varchar(10) DEFAULT NULL,
+  `kalori` varchar(10) DEFAULT NULL,
+  `usia_sel` varchar(10) DEFAULT NULL,
+  `masa_tulang` varchar(10) DEFAULT NULL,
+  `lemak_perut` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `m_member`
+--
+
+LOCK TABLES `m_member` WRITE;
+/*!40000 ALTER TABLE `m_member` DISABLE KEYS */;
+/*!40000 ALTER TABLE `m_member` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -158,7 +222,7 @@ CREATE TABLE `m_user` (
   `id_pegawai` varchar(255) DEFAULT NULL,
   `level` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +231,7 @@ CREATE TABLE `m_user` (
 
 LOCK TABLES `m_user` WRITE;
 /*!40000 ALTER TABLE `m_user` DISABLE KEYS */;
-INSERT INTO `m_user` VALUES (1,'admin','0cc175b9c0f1b6a831c399e269772661 ','99',1),(2,'rudi','YQ==','3',1),(3,'ruru','YQ==','3',1);
+INSERT INTO `m_user` VALUES (1,'admin','YQ==','99',1),(2,'rudi','YQ==','3',1),(3,'ruru','YQ==','3',1);
 /*!40000 ALTER TABLE `m_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +292,7 @@ INSERT INTO `t_masuk` VALUES (1,1,10,'OK',1,'2021-09-10 15:53:23');
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'db_siti'
+-- Dumping routines for database 'db_akagym'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -240,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-15 16:01:24
+-- Dump completed on 2022-06-25  7:44:01

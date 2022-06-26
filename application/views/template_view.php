@@ -164,7 +164,7 @@
             <a href="<?php echo base_url('jabatan'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
-                Jabatan 
+                Posisi 
               </p>
             </a>
           </li>
