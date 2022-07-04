@@ -25,7 +25,6 @@ class M_calculate extends Parent_Model {
      
                       $sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-sm waves-effect" id="detail" onclick="Detail('.$row->id.');" > <i class="nav-icon fas fa-book"></i> Detail </a>  &nbsp;  
                       <a href="javascript:void(0)" class="btn btn-warning btn-sm waves-effect" id="print" onclick="Print('.$row->id.');" > <i class="nav-icon fas fa-print"></i> Print </a>  &nbsp;  
- 
                       <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-sm waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="nav-icon fas fa-trash"></i> Hapus </a>';  
                
                 $data[] = $sub_array;  

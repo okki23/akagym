@@ -267,8 +267,23 @@ class Calculate extends Parent_Controller {
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3); 
-		$get = $this->db->query("select a.*,b.nama from m_calculate a
-		left join m_karyawan b on b.id = a.id_pegawai WHERE a.id = '".$id."' ")->row();
+		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
+		d.option as optionbone,
+		e.min as minfat,e.max as maxfat,e.reason as reasonfat,
+		f.min as minmuscle,f.max as maxmuscle,f.reason as reasonmuscle,
+		g.min as minvfr,g.max as maxvfr,g.reason as reasonvfr,
+		h.min as mincalori,h.max as maxcalori,h.reason as reasoncalori,case when h.jk = 1 then 'Pria' else 'Wanita' end as jkcalori,
+		i.min as minwater,i.max as maxwater,i.reason as reasonwater,case when i.jk = 1 then 'Pria' else 'Wanita' end as jkwater 
+		from t_perhitungan a
+		left join m_member b on b.id = a.id_member
+		left join bmi_setting c on c.id = a.id_bmi
+		left join bone_setting d on d.id = a.id_bone
+		left join fat_setting e on e.id = a.id_fat
+		left join muscle_setting f on f.id = a.id_muscle
+		left join vfr_setting g on g.id = a.id_vfr
+		left join calori_setting h on h.id = a.id_calori
+		left join water_setting i on i.id = a.id_water
+		where a.id  = '".$id."' ")->row();
 		echo json_encode($get,TRUE);
 	}
 	

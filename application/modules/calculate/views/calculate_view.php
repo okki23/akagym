@@ -16,7 +16,7 @@
                         <th style="width:20%;">No Register</th>  
                         <th style="width:20%;">Nama Member</th> 
                         <th style="width:20%;">Date Submit</th>  
-                        <th style="width:10%;">Opsi</th> 
+                        <th style="width:20%;">Opsi</th> 
                       </tr>
                   </thead>  
                 </table>
@@ -160,68 +160,7 @@
                                             <hr>
                                             <div id="detailwater"></div>
 
-                                            
-                                             <!-- <div class="form-group">
-                                                <label for=""> Tinggi Badan (cm)</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="tinggi" id="tinggi" class="form-control" placeholder="Tinggi Badan" />
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Berat Badan (kg)</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="berat_badan" id="berat_badan" class="form-control" placeholder="Berat Badan" />
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Lemak Tubuh</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="lemak_tubuh" id="lemak_tubuh" class="form-control" placeholder="Lemak Tubuh" />
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Kadar Air</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="kadar_air" id="kadar_air" class="form-control" placeholder="Kadar Air" />
-                                                </div>
-                                            </div> 
-                                            <div class="form-group">
-                                                <label for=""> Massa Otot</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="masa_otot" id="masa_otot" class="form-control" placeholder="Massa Otot" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for=""> Kalori</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="kalori" id="kalori" class="form-control" placeholder="Kalori"  />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for=""> Usia Sel</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="usia_sel" id="usia_sel" class="form-control" placeholder="Usia Sel"  />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for=""> Massa Tulang</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="masa_tulang" id="masa_tulang" class="form-control" placeholder="Massa Tulang"  />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for=""> Lemak Perut</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="lemak_perut" id="lemak_perut" class="form-control" placeholder="Lemak Perut" />
-                                                </div>
-                                            </div> -->
+                                             
                                         </div> 
                                     </div> 
  
@@ -268,8 +207,277 @@
                     </div>
                 </div>
     </div> 
+
+    
+    <!-- detail data member -->
+	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Detail Member</h4>
+                        </div>
+                        <div class="modal-body">
+						
+						<table class="table">
+                            <tr>
+								<td style="font-weight:bold;"> No Registrasi</td>
+								<td> : </td>
+								<td> <p id="noregdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Nama</td>
+								<td> : </td>
+								<td> <p id="namadtls"> </p> </td> 
+							</tr>
+							 
+							<tr>
+								<td style="font-weight:bold;"> Telp</td>
+								<td> : </td>
+								<td> <p id="telpdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Usia</td>
+								<td> : </td>
+								<td> <p id="usiadtls"> </p> </td> 
+                            </tr>
+                            
+                            <tr>
+								<td style="font-weight:bold;"> Alamat</td>
+								<td> : </td>
+								<td> <p id="alamatdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Tanggal Daftar</td>
+								<td> : </td>
+								<td> <p id="tgldaftardtls"> </p> </td> 
+							</tr> 
+
+                            <tr>
+								<td style="font-weight:bold;"> Jenis Kelamin</td>
+								<td> : </td>
+								<td> <p id="jenkeldtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Tinggi Badan</td>
+								<td> : </td>
+								<td> <p id="tinggibadandtls"> </p> </td> 
+							</tr> 
+
+                            <tr>
+								<td style="font-weight:bold;"> Berat Badan</td>
+								<td> : </td>
+								<td> <p id="beratbadandtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Lemak Tubuh</td>
+								<td> : </td>
+								<td> <p id="lemaktubuhdtls"> </p> </td> 
+							</tr> 
+
+                            <tr>
+								<td style="font-weight:bold;"> Kadar Air</td>
+								<td> : </td>
+								<td> <p id="kadarairdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Kalori</td>
+								<td> : </td>
+								<td> <p id="kaloridtls"> </p> </td> 
+							</tr>  
+
+                            <tr>
+								<td style="font-weight:bold;"> Usia Sel</td>
+								<td> : </td>
+								<td> <p id="usiaseldtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Masa Tulang</td>
+								<td> : </td>
+								<td> <p id="masatulangdtls"> </p> </td> 
+							</tr> 
+						 
+
+                            <tr>
+								<td style="font-weight:bold;"> Lemak Perut</td>
+								<td> : </td>
+								<td> <p id="lemakperutdtls"> </p> </td>
+								
+								<td style="font-weight:bold;">  </td>
+								<td>  </td>
+								<td> <p id="masatulangdtls">   </td> 
+							</tr> 
+    
+                        
+							 <div class="modal-footer">
+							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
+							 </div>
+						</table>
+                           
+                        <hr>
+                            <h3>Perhitungan Aktual</h3>
+                            <table class="table">
+                            <tr>
+								<td style="font-weight:bold;"> BMI</td>
+								<td> : </td>
+								<td> <p id="bmidtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> BMI Result</td>
+								<td> : </td>
+								<td> <p id="bmiresults"> </p> </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> Fat</td>
+								<td> : </td>
+								<td> <p id="fatdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Fat Result</td>
+								<td> : </td>
+								<td> <p id="fatresults"> </p> </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> Muscle</td>
+								<td> : </td>
+								<td> <p id="muscledtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Muscle Result</td>
+								<td> : </td>
+								<td> <p id="muscleresults"> </p> </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> VFR</td>
+								<td> : </td>
+								<td> <p id="vfrdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> VFR Result</td>
+								<td> : </td>
+								<td> <p id="vfrresults"> </p> </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> Bone</td>
+								<td> : </td>
+								<td> <p id="bonedtls"> </p> </td>
+								
+								<td style="font-weight:bold;">   </td>
+								<td>  </td>
+								<td>  </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> Calori </td>
+								<td> : </td>
+								<td> <p id="caloridtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Calori Result</td>
+								<td> : </td>
+								<td> <p id="caloriresults"> </p> </td> 
+							</tr>
+                            <tr>
+								<td style="font-weight:bold;"> Water </td>
+								<td> : </td>
+								<td> <p id="waterdtls"> </p> </td>
+								
+								<td style="font-weight:bold;"> Water Result</td>
+								<td> : </td>
+								<td> <p id="waterresults"> </p> </td> 
+							</tr>
+							  
+                         
+						</table>
+					   </div>
+                     
+                    </div>
+                </div>
+    </div>
+
   <script> 
 
+function Detail(id){ 
+		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
+		$.ajax({
+			 url:"<?php echo base_url(); ?>calculate/get_data_edit/"+id,
+			 type:"GET",
+			 dataType:"JSON", 
+			 success:function(result){   
+                   
+                 $("#namadtls").html(result.nama);
+                 $("#noregdtls").html(result.no_reg);
+                 $("#usiadtls").html(result.usia+' Tahun');  
+                 $("#telpdtls").html(result.telp); 
+                 $("#alamatdtls").html(result.alamat); 
+                 $("#emaildtls").html(result.email); 
+                 $("#tgldaftardtls").html(result.tgl_daftar);  
+                 $("#jenkeldtls").html(result.gents);  
+                 $("#tinggibadandtls").html(result.tinggi+ ' cm'); 
+                 $("#beratbadandtls").html(result.berat_badan+ ' kg'); 
+                 $("#lemaktubuhdtls").html(result.lemak_tubuh);  
+                 $("#kadarairdtls").html(result.kadar_air); 
+                 $("#kaloridtls").html(result.kalori); 
+                 $("#usiaseldtls").html(result.usia_sel); 
+                 $("#masatulangdtls").html(result.masa_tulang); 
+                 $("#lemakperutdtls").html(result.lemak_perut); 
+                 
+                 if(result.id_bmi == 99){
+                    $("#bmidtls").html(result.bmi_value); 
+                    $("#bmiresults").html(result.bmi_reason); 
+                 }else{
+                    $("#bmidtls").html(result.minbmi+' - '+result.maxbmi); 
+                    $("#bmiresults").html(result.reasonbmi); 
+                 }
+
+                 if(result.id_fat == 99){
+                    $("#bmidtls").html(result.fat_value); 
+                    $("#bmiresults").html(result.fat_reason); 
+                 }else{
+                    $("#fatdtls").html(result.minfat+' - '+result.maxfat); 
+                    $("#fatresults").html(result.reasonfat)
+                 }
+
+                 if(result.id_muscle == 99){
+                    $("#muscledtls").html(result.muscle_value); 
+                    $("#muscleresults").html(result.muscle_reason); 
+                 }else{
+                    $("#muscledtls").html(result.minmuscle+' - '+result.maxmuscle); 
+                    $("#muscleresults").html(result.reasonmuscle);
+                 }
+
+                 if(result.id_muscle == 99){
+                    $("#vfrdtls").html(result.vfr_value); 
+                    $("#vfrresults").html(result.vfr_reason); 
+                 }else{
+                    $("#vfrdtls").html(result.minvfr+' - '+result.maxvfr); 
+                    $("#vfrresults").html(result.reasonvfr); 
+                 }
+
+                 if(result.id_calori == 99){
+                    $("#caloridtls").html(result.jenkel_calori_value+ ' - '+result.calori_value); 
+                    $("#caloriresults").html(result.calori_reason); 
+                 }else{
+                    $("#caloridtls").html(result.jkcalori+ '- ' +result.mincalori+' - '+result.maxcalori); 
+                    $("#caloriresults").html(result.reasoncalori); 
+                 }
+
+                 if(result.id_water == 99){
+                    $("#waterdtls").html(result.jenkel_water_value+ ' - '+result.water_value); 
+                    $("#waterresults").html(result.water_reason); 
+                 }else{
+                    $("#waterdtls").html(result.jkwater+ '- ' +result.minwater+' - '+result.maxwater); 
+                    $("#waterresults").html(result.reasonwater); 
+                 }
+
+                 if(result.id_bone == 99){
+                    $("#bonedtls").html(result.bone_reason); 
+                 }else{
+                    $("#bonedtls").html(result.optionbone); 
+                 }
+                //  $("#bmidtls").html(result.minbmi+' - '+result.maxbmi); 
+                //  $("#bmiresults").html(result.reasonbmi); 
+                //  $("#fatdtls").html(result.minfat+' - '+result.maxfat); 
+                //  $("#fatresults").html(result.reasonfat); 
+                //  $("#muscledtls").html(result.minmuscle+' - '+result.maxmuscle); 
+                //  $("#muscleresults").html(result.reasonmuscle); 
+                //  $("#vfrdtls").html(result.minvfr+' - '+result.maxvfr); 
+                //  $("#vfrresults").html(result.reasonvfr); 
+                //  $("#bonedtls").html(result.optionbone); 
+                //  $("#caloridtls").html(result.jkcalori+ '- ' +result.mincalori+' - '+result.maxcalori); 
+                //  $("#caloriresults").html(result.reasoncalori); 
+                //  $("#waterdtls").html(result.jkwater+ '- ' +result.minwater+' - '+result.maxwater); 
+                //  $("#waterresults").html(result.reasonwater); 
+                  
+			 }
+		 });
+	 }
     function FuncOptFat(parseval){
         var value = parseval.value;
         if(value == 99){
