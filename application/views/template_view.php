@@ -176,12 +176,66 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">PERHITUNGAN</li>
+          <li class="nav-header">SETTING</li>
           <li class="nav-item">
-            <a href="<?php echo base_url('params_setting'); ?>" class="nav-link">
+            <a href="<?php echo base_url('fat_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Setting Parameter
+                Fat Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('bmi_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                BMI Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('muscle_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Muscle Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('vfr_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                VFR Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('water_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Water Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('calori_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Calori Setting
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('bone_setting'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Bone Setting
                 <!-- <span class="badge badge-info right">2</span> -->
               </p>
             </a>
