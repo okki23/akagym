@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 04/07/2022 08:14:11
+ Date: 04/07/2022 14:49:30
 */
 
 SET NAMES utf8mb4;
@@ -213,6 +213,44 @@ INSERT INTO `muscle_setting` VALUES (2, 26, 30, 'B');
 INSERT INTO `muscle_setting` VALUES (3, 31, 35, 'C');
 INSERT INTO `muscle_setting` VALUES (4, 36, 40, 'D');
 INSERT INTO `muscle_setting` VALUES (5, 41, 45, 'E');
+
+-- ----------------------------
+-- Table structure for t_perhitungan
+-- ----------------------------
+DROP TABLE IF EXISTS `t_perhitungan`;
+CREATE TABLE `t_perhitungan`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_member` int(11) NULL DEFAULT NULL,
+  `date_submit` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_bmi` int(11) NULL DEFAULT NULL,
+  `bmi_value` int(11) NULL DEFAULT NULL,
+  `bmi_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_bone` int(11) NULL DEFAULT NULL,
+  `bone_value` int(11) NULL DEFAULT NULL,
+  `bone_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_calori` int(11) NULL DEFAULT NULL,
+  `jenkel_calori_value` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `calori_value` int(11) NULL DEFAULT NULL,
+  `calori_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_fat` int(11) NULL DEFAULT NULL,
+  `fat_value` int(11) NULL DEFAULT NULL,
+  `fat_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_muscle` int(11) NULL DEFAULT NULL,
+  `muscle_value` int(11) NULL DEFAULT NULL,
+  `muscle_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_vfr` int(11) NULL DEFAULT NULL,
+  `vfr_value` int(11) NULL DEFAULT NULL,
+  `vfr_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_water` int(11) NULL DEFAULT NULL,
+  `water_value` int(11) NULL DEFAULT NULL,
+  `water_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `jenkel_water_value` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_perhitungan
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for vfr_setting

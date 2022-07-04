@@ -74,6 +74,13 @@
     <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- AdminLTE App -->
+    <style>
+      .modal-body {
+      position: relative; 
+      height: 600px;
+      overflow-y: scroll;
+      }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

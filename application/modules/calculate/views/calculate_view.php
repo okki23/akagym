@@ -145,7 +145,23 @@
                                         <div class="col-sm-6">
                                             <h4> Pengukuran Aktual </h4>
                                             <hr>
-                                             <div class="form-group">
+
+                                            <div id="detailfat"></div>
+                                            <hr>
+                                            <div id="detailmuscle"></div>
+                                            <hr>
+                                            <div id="detailbmi"></div>
+                                            <hr>
+                                            <div id="detailbone"></div>
+                                            <hr>
+                                            <div id="detailvfr"></div>
+                                            <hr>
+                                            <div id="detailcalori"></div>
+                                            <hr>
+                                            <div id="detailwater"></div>
+
+                                            
+                                             <!-- <div class="form-group">
                                                 <label for=""> Tinggi Badan (cm)</label>
                                                 <div class="form-line">
                                                     <input type="text" name="tinggi" id="tinggi" class="form-control" placeholder="Tinggi Badan" />
@@ -205,7 +221,7 @@
                                                 <div class="form-line">
                                                     <input type="text" name="lemak_perut" id="lemak_perut" class="form-control" placeholder="Lemak Perut" />
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div> 
                                     </div> 
  
@@ -253,6 +269,68 @@
                 </div>
     </div> 
   <script> 
+
+    function FuncOptFat(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionfat").css("display", "block");
+        }else{
+            $("#sectionfat").css("display", "none");
+        } 
+    }
+
+    function FuncOptMuscle(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionmuscle").css("display", "block");
+        }else{
+            $("#sectionmuscle").css("display", "none");
+        } 
+    }
+
+    function FunOptBMI(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionbmi").css("display", "block");
+        }else{
+            $("#sectionbmi").css("display", "none");
+        } 
+    }
+    function FunOptBone(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionbone").css("display", "block");
+        }else{
+            $("#sectionbone").css("display", "none");
+        } 
+    }
+    function FunOptVFR(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionvfr").css("display", "block");
+        }else{
+            $("#sectionvfr").css("display", "none");
+        } 
+    }
+
+    function FunOptCalori(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectioncalori").css("display", "block");
+        }else{
+            $("#sectioncalori").css("display", "none");
+        } 
+    }
+
+    function FunOptWater(parseval){
+        var value = parseval.value;
+        if(value == 99){
+            $("#sectionwater").css("display", "block");
+        }else{
+            $("#sectionwater").css("display", "none");
+        } 
+    }
+
     $("#adminbtn").on("click",function(){
         $("#level").val('1');
         $(this).attr('class','btn btn-primary');
@@ -267,25 +345,8 @@
    
     $('#daftar_member').DataTable( {
         "ajax": "<?php echo base_url(); ?>member/fetch_member"           
-    });
-
-    // $("#namadtl").html(result.nama);
-    //              $("#noregdtl").html(result.no_reg);
-    //              $("#usiadtl").html(result.usia+' Tahun'); 
-    //              $("#namadtl").html(result.nama); 
-    //              $("#telpdtl").html(result.telp); 
-    //              $("#alamatdtl").html(result.alamat); 
-    //              $("#emaildtl").html(result.email); 
-    //              $("#tgldaftardtl").html(result.tgl_daftar);  
-    //              $("#jenkeldtl").html(result.gents);  
-    //              $("#tinggibadandtl").html(result.tinggi+ ' cm'); 
-    //              $("#beratbadandtl").html(result.berat_badan+ ' kg'); 
-    //              $("#lemaktubuhdtl").html(result.lemak_tubuh);  
-    //              $("#kadarairdtl").html(result.kadar_air); 
-    //              $("#kaloridtl").html(result.kalori); 
-    //              $("#usiaseldtl").html(result.usia_sel); 
-    //              $("#masatulangdtl").html(result.masa_tulang); 
-    //              $("#lemakperutdtl").html(result.lemak_perut); 
+    }); 
+     
     var daftar_member = $('#daftar_member').DataTable();
      
     $('#daftar_member tbody').on('click', 'tr', function () {
@@ -373,20 +434,12 @@
     } 
    
     function Simpan_Data(){ 
-         var formData = new FormData($('#calculate_form')[0]);  
-           
-         var calculatename = $("#calculatename").val();
-         
-         if(calculatename == ''){
-            alert("calculatename Belum anda masukkan!");
-            $("#calculatename").parents('.form-line').addClass('focused error');
-            $("#calculatename").focus();
-          
-         }else{
+         var formData = new FormData($('#user_form')[0]);  
+        
 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>calculate/simpan_data_calculate",
+             url:"<?php echo base_url(); ?>calculate/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -395,24 +448,47 @@
                 
                  $("#defaultModal").modal('hide');
                  $('#example1').DataTable().ajax.reload(); 
-                 $('#calculate_form')[0].reset();
+                 $('#user_form')[0].reset();
                  toastr.success('Data Berhasil Disimpan');
               
              }
             });  
-         } 
+       
     } 
 
     function CariMember(){
         $("#CariMemberModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
     $(document).ready(function() {
-        
+        // $("#fat_reason").disable(true);
+     
            $("#addmodal").on("click",function(){
                $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
                $("#method").val('Add');
-               $("#defaultModalLabel").html("Form Tambah Data");
-           });
+               $("#defaultModalLabel").html("Form Tambah Data"); 
+               $.get("<?php echo base_url(); ?>calculate/getdetailfat",function(result){
+                    $("#detailfat").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailmuscle",function(result){
+                    $("#detailmuscle").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailbmi",function(result){
+                    $("#detailbmi").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailbone",function(result){
+                    $("#detailbone").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailvfr",function(result){
+                    $("#detailvfr").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailcalori",function(result){
+                    $("#detailcalori").html(result);
+               });
+               $.get("<?php echo base_url(); ?>calculate/getdetailwater",function(result){
+                    $("#detailwater").html(result);
+               });
+               
+            });
              
            $("#example1").DataTable({
               "ajax":"<?php echo base_url(); ?>calculate/fetch_calculate",
