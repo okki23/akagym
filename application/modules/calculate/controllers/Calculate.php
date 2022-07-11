@@ -320,8 +320,100 @@ class Calculate extends Parent_Controller {
 			
 			echo json_encode($result,TRUE);
 	
+	}
+
+	
+	public function print()
+	{
+		$id = $this->uri->segment(3);
+		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
+		d.option as optionbone,
+		e.min as minfat,e.max as maxfat,e.reason as reasonfat,
+		f.min as minmuscle,f.max as maxmuscle,f.reason as reasonmuscle,
+		g.min as minvfr,g.max as maxvfr,g.reason as reasonvfr,
+		h.min as mincalori,h.max as maxcalori,h.reason as reasoncalori,case when h.jk = 1 then 'Pria' else 'Wanita' end as jkcalori,
+		i.min as minwater,i.max as maxwater,i.reason as reasonwater,case when i.jk = 1 then 'Pria' else 'Wanita' end as jkwater 
+		from t_perhitungan a
+		left join m_member b on b.id = a.id_member
+		left join bmi_setting c on c.id = a.id_bmi
+		left join bone_setting d on d.id = a.id_bone
+		left join fat_setting e on e.id = a.id_fat
+		left join muscle_setting f on f.id = a.id_muscle
+		left join vfr_setting g on g.id = a.id_vfr
+		left join calori_setting h on h.id = a.id_calori
+		left join water_setting i on i.id = a.id_water
+		where a.id  = '".$id."' ")->row();
+
+		// echo $id; die();
+		$pdf = new \TCPDF();
+		$pdf->AddPage('L', 'mm', 'A4');
+		$pdf->SetFont('', 'B', 14);
+		// $pdf->Image('assets/backend/dist/img/akalogo.png', 15, 140, 75, 113, 'JPG', 'http://www.tcpdf.org', '', true, 150, '', false, false, 1, false, false, false);
+
+		$pdf->Cell(277, 10, "LISTING PERHITUNGAN AKTUAL MEMBER ".$get->no_reg." - ".$get->nama, 0, 1, 'C');
+		$pdf->SetAutoPageBreak(true, 0);
+		// Add Header
+		$pdf->Ln(10);
+		$pdf->SetFont('', 'B', 12);
+		$pdf->Cell(20, 8, "No", 1, 0, 'C');
+		$pdf->Cell(100, 8, "Nama Pegawai", 1, 0, 'C');
+		$pdf->Cell(120, 8, "Alamat", 1, 0, 'C');
+		$pdf->Cell(37, 8, "Telp", 1, 1, 'C');
+		$pdf->SetFont('', '', 12);
+		$pegawai = $this->db->get('m_member')->result();
+		$no=0;
+		foreach ($pegawai as $data){
+			$no++;
+			$pdf->Cell(20,8,$no,1,0, 'C');
+			$pdf->Cell(100,8,$data->nama,1,0);
+			$pdf->Cell(120,8,$data->alamat,1,0);
+			$pdf->Cell(37,8,$data->telp,1,1);
 		}
+		$pdf->SetFont('', 'B', 10);
+		$pdf->Cell(277, 10, "Laporan Pdf Menggunakan Tcpdf, Instalasi Tcpdf Via Composer", 0, 1, 'L');
+		$pdf->Output('Laporan Member.pdf'); 
+	}
        
+
+  public function cetak_data(){
+		$id = $this->uri->segment(3); 
+		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
+		d.option as optionbone,
+		e.min as minfat,e.max as maxfat,e.reason as reasonfat,
+		f.min as minmuscle,f.max as maxmuscle,f.reason as reasonmuscle,
+		g.min as minvfr,g.max as maxvfr,g.reason as reasonvfr,
+		h.min as mincalori,h.max as maxcalori,h.reason as reasoncalori,case when h.jk = 1 then 'Pria' else 'Wanita' end as jkcalori,
+		i.min as minwater,i.max as maxwater,i.reason as reasonwater,case when i.jk = 1 then 'Pria' else 'Wanita' end as jkwater 
+		from t_perhitungan a
+		left join m_member b on b.id = a.id_member
+		left join bmi_setting c on c.id = a.id_bmi
+		left join bone_setting d on d.id = a.id_bone
+		left join fat_setting e on e.id = a.id_fat
+		left join muscle_setting f on f.id = a.id_muscle
+		left join vfr_setting g on g.id = a.id_vfr
+		left join calori_setting h on h.id = a.id_calori
+		left join water_setting i on i.id = a.id_water
+		where a.id  = '".$id."' ")->row(); 
+		$data['trans'] = $get;
+   			$this->load->library("pdf");
+			 
+			$this->pdf->setPrintHeader(false);
+			$this->pdf->setPrintFooter(true, 'aku', 'kau');
+			$this->pdf->SetHeaderData("", "", 'Judul Header', "codedb.co");
+			$this->pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+			 // set auto page breaks
+			$this->pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+			 // add a page
+			$this->pdf->AddPage("P", "A4");
+			 // set font
+			$this->pdf->SetFont("helvetica", "", 9);
+			$html = $this->load->view('calculate/calculate_print', $data, true);
+
+			$this->pdf->writeHTML($html, true, false, true, false, "");
+			 ob_end_clean();
+			 //$this->pdf->Output("Employee Information.pdf", "I");
+			$this->pdf->Output(base_url().'/store_files/filename.pdf', 'I');
+ }
 
 
 }

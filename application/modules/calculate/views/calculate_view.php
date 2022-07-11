@@ -432,7 +432,7 @@ function Detail(id){
                     $("#muscleresults").html(result.reasonmuscle);
                  }
 
-                 if(result.id_muscle == 99){
+                 if(result.id_vfr == 99){
                     $("#vfrdtls").html(result.vfr_value); 
                     $("#vfrresults").html(result.vfr_reason); 
                  }else{
