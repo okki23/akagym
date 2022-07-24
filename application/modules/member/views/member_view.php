@@ -111,7 +111,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Berat Badan" class="form-control"> 
+                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Masa Otot" class="form-control"> 
                                                 </div>
 
                                             </div>
@@ -212,7 +212,21 @@
                                                 </div>
 
                                             </div>
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Masa Otot</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                                </div>
 
+                                                </div>
+
+                                                <div class="card-body">
+                                                <input type="text" name="masa_otot" id="masa_otot" placeholder="Masa Otot" class="form-control"> 
+                                                </div>
+
+                                            </div>
                                             <div class="card card-primary collapsed-card">
                                                 <div class="card-header">
                                                 <h3 class="card-title">Kalori</h3>
@@ -391,7 +405,7 @@
 							</tr> 
 
                             <tr>
-								<td style="font-weight:bold;"> Berat Badan</td>
+								<td style="font-weight:bold;"> Masa Otot
 								<td> : </td>
 								<td> <p id="beratbadandtl"> </p> </td>
 								
@@ -489,14 +503,12 @@
                 })
             }else{
                 $.ajax({
-                    url:"<?php echo base_url('calculate/lemak_service'); ?>",
+                    url:"<?php echo base_url('calculate/lemak_tubuh_service'); ?>",
                     data:{usia:usia,jenkel:jenkel,lemak_tubuh:lemak_tubuh},
                     type:"POST",
                     success:function(response){
                         var resp = JSON.parse(response);
-                        // var regex = /<br\s*[\/]?>/gi;
-                        // console.log(resp.icon);
-                        // var result = 'Hasil Timbangan Anda : '+resp.timbangan+ '% \nl2br Keterangan : ' +resp.keterangan;
+                       
                         Swal.fire({
                         icon:  resp.icon,
                         title:  resp.title,  
@@ -515,7 +527,7 @@
             var rating_fisik = $(this).val();
  
                 $.ajax({
-                    url:"<?php echo base_url('calculate/rating_fisik'); ?>",
+                    url:"<?php echo base_url('calculate/rating_fisik_service'); ?>",
                     data:{rating_fisik:rating_fisik},
                     type:"POST",
                     success:function(response){
@@ -529,9 +541,39 @@
                         }) 
                     }
                 })
-            
-            
+             
         });
+
+        $("#masa_otot").pressEnter(function(){
+            var jenkel = $("#jenkel").val();
+            var masa_otot = $(this).val();
+            
+            if(jenkel == '' || jenkel == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Jenis Kelamin Belum Anda Isi...!'
+                })
+            }else{
+                $.ajax({
+                  url:"<?php echo base_url('calculate/masa_otot_service'); ?>",
+                  data:{masa_otot:masa_otot,jenkel:jenkel},
+                  type:"POST",
+                  success:function(response){
+                      var resp = JSON.parse(response);
+                     
+                      Swal.fire({
+                      icon:  resp.icon,
+                      title:  resp.title,  
+                      html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' </b>' +
+                              '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
+                      }) 
+                  }
+              })
+            }
+             
+           
+      });
 
         $("#priabtn").on("click",function(){
             $("#jenkel").val('1');

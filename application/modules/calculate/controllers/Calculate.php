@@ -269,7 +269,7 @@ class Calculate extends Parent_Controller {
 				</div>";
 	}
 	
-	public function rating_fisik(){
+	public function rating_fisik_service(){
 		$rating_fisik = $this->input->post('rating_fisik');
 		
 		if($rating_fisik >= 1 && $rating_fisik <=5){
@@ -279,11 +279,42 @@ class Calculate extends Parent_Controller {
 		}else if($rating_fisik >= 9 && $rating_fisik <=15){
 			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Tidak Sehat','icon'=>'warning');
 		}else if($rating_fisik >= 15 && $rating_fisik <=20){
-			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Sangat Berbahaya','icon'=>'danger');
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Sangat Berbahaya','icon'=>'error');
 		}
 		echo json_encode($arr_response);
 	}
-	public function lemak_service(){
+
+	public function masa_otot_service(){
+		$masa_otot = $this->input->post('masa_otot');
+		$jenkel = $this->input->post('jenkel');
+		 
+		if($jenkel == 1){ //pria  
+			if($masa_otot >= 35 && $masa_otot <=40){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');
+			}else if($masa_otot >= 40 && $masa_otot <=45){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+			}else if($masa_otot < 35){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk'); 
+			}else if($masa_otot > 45){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk');   
+			}
+		}else{ //wanita
+			if($masa_otot >= 30 && $masa_otot <=35){   
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');
+			}else if($masa_otot >= 35 && $masa_otot <=40){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+			}else if($masa_otot < 30){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk');  
+			}else if($masa_otot > 45){
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk'); 
+			}
+	 
+		}
+
+		echo json_encode($arr_response);
+	}
+
+	public function lemak_tubuh_service(){
 		$lemak_tubuh = $this->input->post('lemak_tubuh');
 		$usia = $this->input->post('usia');
 		$jenkel = $this->input->post('jenkel'); 
@@ -298,7 +329,7 @@ class Calculate extends Parent_Controller {
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -352,7 +383,7 @@ class Calculate extends Parent_Controller {
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -409,7 +440,7 @@ class Calculate extends Parent_Controller {
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -463,7 +494,7 @@ class Calculate extends Parent_Controller {
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){ 
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
