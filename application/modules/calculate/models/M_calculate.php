@@ -2,8 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 class M_calculate extends Parent_Model { 
-      var $nama_tabel = 't_perhitungan';
-      var $daftar_field = array('id','id_member','date_submit','id_bmi','bmi_value','bmi_reason','bone_value','id_bone','bone_reason','id_calori','jenkel_calori_value','calori_value','calori_reason','id_fat','fat_value','fat_reason','id_muscle','muscle_value','muscle_reason','id_vfr','vfr_value','vfr_reason','id_water','water_value','water_reason','jenkel_water_value');
+
+      //   var $nama_tabel = 't_perhitungan';
+      //   var $daftar_field = array('id','id_member','date_submit','id_bmi','bmi_value','bmi_reason','bone_value','id_bone','bone_reason','id_calori','jenkel_calori_value','calori_value','calori_reason','id_fat','fat_value','fat_reason','id_muscle','muscle_value','muscle_reason','id_vfr','vfr_value','vfr_reason','id_water','water_value','water_reason','jenkel_water_value');
+      //   var $primary_key = 'id';
+  
+	var $nama_tabel = 't_calculate';
+      var $daftar_field = array('id','id_member','date_submit','fat','vfr','masa_otot','masa_tulang','kadar_air','kalori','usia_sel','lemak_perut');
       var $primary_key = 'id';
 	  
   public function __construct(){
@@ -11,7 +16,7 @@ class M_calculate extends Parent_Model {
         $this->load->database();
   }
   public function fetch_calculate(){   
-		   $getdata = $this->db->query('select a.*,b.no_reg,b.nama from t_perhitungan a
+		   $getdata = $this->db->query('select a.*,b.no_reg,b.nama from t_calculate a
                left join m_member b on b.id = a.id_member')->result();
 		   $data = array();  
 		   $no = 1;

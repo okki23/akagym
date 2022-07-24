@@ -19,7 +19,7 @@
                         <th style="width:20%;">Opsi</th> 
                       </tr>
                   </thead>  
-                </table>
+                </table> 
               </div>
               <!-- /.card-body -->
             </div>
@@ -46,7 +46,7 @@
                                             
                                             <div class="input-group">
                                                 <input type="text" name="nama_member" id="nama_member" class="form-control" readonly="readonly" >
-                                                <input type="hidden" name="id_member" id="id_member" readonly="readonly">
+                                                <input type="hidden" name="id_memberx" id="id_memberx" readonly="readonly">
                                                 <span class="input-group-append">
                                                     <button type="button"  onclick="CariMember();" class="btn btn-primary btn-flat">Pilih Member...</button>
                                                 </span>
@@ -131,12 +131,20 @@
                                                     <td> : </td>
                                                     <td> <p id="lemakperutdtl"> </p> </td>
                                                     
-                                                    <td style="font-weight:bold;">  </td>
-                                                    <td>  </td>
-                                                    <td> <p id="masatulangdtl">   </td> 
+                                                    <td style="font-weight:bold;"> Masa Otot </td>
+                                                    <td> : </td>
+                                                    <td> <p id="masaototdtl">   </td> 
                                                 </tr> 
                                             
-                                                
+                                                <tr>
+                                                    <td style="font-weight:bold;"> Rating Fisik</td>
+                                                    <td> : </td>
+                                                    <td> <p id="ratingfisikdtl"> </p> </td>
+                                                    
+                                                    <td style="font-weight:bold;"> BMI  </td>
+                                                    <td> : </td>
+                                                    <td> <p id="bmidtl"> </p>  </td> 
+                                                </tr>  
                                             </table>
 
                                           
@@ -145,8 +153,92 @@
                                         <div class="col-sm-6">
                                             <h4> Pengukuran Aktual </h4>
                                             <hr>
+                                            <input type="hidden" name="id_member" id="id_member">
+                                            <label for=""> Lemak Tubuh (Fat) </label>
+                                                <input type="text" name="fat" id="fat" class="form-control" >
+                                            <br>
 
-                                            <div id="detailfat"></div>
+                                            <label for=""> Rating Fisik (VFR) </label>
+                                                <select name="vfr" id="vfr" class="form-control">
+                                                    <option value="">--Pilih--</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option> 
+                                                </select>
+                                                <!-- <input type="text" name="vfr" id="vfr" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%"> -->
+                                            <br>
+
+                                            <label for=""> Masa Otot </label>
+                                                <select name="masa_otot" id="masa_otot" class="form-control">
+                                                    <option value="">--Pilih--</option>
+                                                    <option value="1">Obesitas Tersembunyi</option>
+                                                    <option value="2">Obesitas</option>
+                                                    <option value="3">Gemuk Berotot</option>
+                                                    <option value="4">Kurang Berotot</option>
+                                                    <option value="5">Standar Normal</option>
+                                                    <option value="6">Berotot (Atlit)</option>
+                                                    <option value="7">Kurus</option>
+                                                    <option value="8">Kurus Berotot</option>
+                                                    <option value="9">Kurus & Sangat Berotot</option> 
+                                                </select>
+                                                <!-- <input type="text" name="masa_otot" id="masa_otot" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%"> -->
+                                            <br>
+
+                                            <label for=""> Masa Tulang </label>
+                                                <input type="text" name="masa_tulang" id="masa_tulang" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%">
+                                            <br>
+
+                                            <label for=""> Kadar Air </label>
+                                                <input type="text" name="kadar_air" id="kadar_air" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%">
+                                            <br> 
+
+                                            <label for=""> Kalori </label>
+                                                <select name="kalori" id="kalori" class="form-control">
+                                                    <option value="">--Pilih--</option>
+                                                    <option value="1">Cara Langsing</option>
+                                                    <option value="2">Cara Sehat</option>
+                                                    <option value="3">Cara Gemuk</option> 
+                                                </select>
+                                                <!-- <input type="text" name="kalori" id="kalori" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%"> -->
+                                            <br>
+
+                                            <label for=""> Usia Sel </label>
+                                                <select name="kalori" id="kalori" class="form-control">
+                                                    <option value="">--Pilih--</option>
+                                                    <option value="1"> < Muda</option>
+                                                    <option value="2"> = Umur </option>
+                                                    <option value="3"> > Tua</option> 
+                                                </select>
+                                                <!-- <input type="text" name="usia_sel" id="usia_sel" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%"> -->
+                                            <br>
+
+                                            <label for=""> Lemak Perut </label>
+                                                <input type="text" name="lemak_perut" id="lemak_perut" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%">
+                                            <br>
+                                            
+                                            <label for=""> BMI </label>
+                                                <input type="text" name="bmi" id="bmi" class="form-control" data-toggle="popover" data-trigger="focus" data-content="Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%">
+                                            <br>
+                                            
+                                            
+                                            <!-- <div class="toastfat" data-autohide="false">
+                                                <div class="toast-header">
+                                                    <strong class="mr-auto text-primary">Toast Header</strong> 
+                                                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                                                </div>
+                                                <div class="toast-body">
+                                                    Some text inside the toast body
+                                                </div>
+                                            </div> -->
+                                                <!-- <label for="" class="btn btn-block btn-info"> Under 30 = Pria Normal : 14-20% | Wanita Normal 17-21% <br> 
+                                                Up 30 = Pria Normal : 14-20% | Wanita Normal 17-21%</label> -->
+                                            <!-- <div id="detailfat"></div>
                                             <hr>
                                             <div id="detailmuscle"></div>
                                             <hr>
@@ -158,7 +250,7 @@
                                             <hr>
                                             <div id="detailcalori"></div>
                                             <hr>
-                                            <div id="detailwater"></div>
+                                            <div id="detailwater"></div> -->
 
                                              
                                         </div> 
@@ -170,9 +262,7 @@
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
                              </form>
-                       </div>
-
- 
+                       </div> 
                      
                     </div>
                 </div>
@@ -291,14 +381,24 @@
 						 
 
                             <tr>
-								<td style="font-weight:bold;"> Lemak Perut</td>
-								<td> : </td>
-								<td> <p id="lemakperutdtls"> </p> </td>
-								
-								<td style="font-weight:bold;">  </td>
-								<td>  </td>
-								<td> <p id="masatulangdtls">   </td> 
-							</tr> 
+                                    <td style="font-weight:bold;"> Lemak Perut</td>
+                                    <td> : </td>
+                                    <td> <p id="lemakperutdtls"> </p> </td>
+                                                    
+                                    <td style="font-weight:bold;"> Masa Otot </td>
+                                    <td> : </td>
+                                    <td> <p id="masaototdtls">   </td> 
+                            </tr> 
+                                            
+                            <tr>
+                                    <td style="font-weight:bold;"> Rating Fisik</td>
+                                    <td> : </td>
+                                    <td> <p id="ratingfisikdtls"> </p> </td>
+                                                    
+                                    <td style="font-weight:bold;"> BMI </td>
+                                    <td> : </td>
+                                    <td>  <p id="bmidtls">  </td> 
+                            </tr> 
     
                         
 							 <div class="modal-footer">
@@ -407,6 +507,9 @@ function Detail(id){
                  $("#usiaseldtls").html(result.usia_sel); 
                  $("#masatulangdtls").html(result.masa_tulang); 
                  $("#lemakperutdtls").html(result.lemak_perut); 
+                 $("#masaototdtls").html(result.masa_otot);
+                 $("#ratingfisikdtls").html(result.rating_fisik);  
+                 $("#bmidtls").html(result.bmi);  
                  
                  if(result.id_bmi == 99){
                     $("#bmidtls").html(result.bmi_value); 
@@ -560,8 +663,9 @@ function Detail(id){
     $('#daftar_member tbody').on('click', 'tr', function () {
          
          var content = daftar_member.row(this).data()
-        //  console.log(content);
+         console.log([5]);
          $("#nama_member").val(content[1]);
+         $("#id_memberx").val(content[5]);
          $("#id_member").val(content[5]);
 
          $.get("<?php echo base_url(); ?>member/get_data_edit/"+content[5],function(response){
@@ -583,6 +687,9 @@ function Detail(id){
                  $("#usiaseldtl").html(result.usia_sel); 
                  $("#masatulangdtl").html(result.masa_tulang); 
                  $("#lemakperutdtl").html(result.lemak_perut); 
+                 $("#masaototdtl").html(result.masa_otot); 
+                 $("#ratingfisikdtl").html(result.rating_fisik); 
+                 $("#bmidtl").html(result.bmi); 
          });
          $("#CariMemberModal").modal('hide');
     });
@@ -616,6 +723,24 @@ function Detail(id){
  
     function Bersihkan_Form(){
         $(':input').val(''); 
+        $(':select').val(''); 
+        $("#noregdtl").html('');
+        $("#namadtl").html('');
+        $("#telpdtl").html('');
+        $("#usiadtl").html('');
+        $("#alamatdtl").html('');
+        $("#tgldaftardtl").html('');
+        $("#jenkeldtl").html('');
+        $("#tinggibadandtl").html('');
+        $("#beratbadandtl").html('');
+        $("#lemaktubuhdtl").html('');
+        $("#kadarairdtl").html('');
+        $("#kaloridtl").html('');
+        $("#usiaseldtl").html('');
+        $("#masatulangdtl").html('');
+        $("#lemakperutdtl").html('');
+        $("#masaototdtl").html('');
+        $("#ratingfisikdtl").html('');
     } 
    
     function Hapus_Data(id){
@@ -657,7 +782,14 @@ function Detail(id){
                  $("#defaultModal").modal('hide');
                  $('#example1').DataTable().ajax.reload(); 
                  $('#user_form')[0].reset();
-                 toastr.success('Data Berhasil Disimpan');
+                 
+                 Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+                });
+
               
              }
             });  
@@ -668,8 +800,11 @@ function Detail(id){
         $("#CariMemberModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
     $(document).ready(function() {
-        // $("#fat_reason").disable(true);
-     
+ 
+        $("#fat").click(function(){
+            $('.toastfat').toast('show');
+        });
+        
            $("#addmodal").on("click",function(){
                $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
                $("#method").val('Add');

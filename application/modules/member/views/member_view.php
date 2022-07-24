@@ -13,11 +13,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                       <tr> 
-                        <th style="width:20%;">No Reg</th>   
+                        <th style="width:10%;">No Reg</th>   
                         <th style="width:20%;">Nama</th>   
-                        <th style="width:20%;">Usia</th>   
+                        <th style="width:10%;">Usia</th>   
                         <th style="width:20%;">Alamat</th>   
-                        <th style="width:20%;">Opsi</th>   
+                        <th style="width:40%;">Opsi</th>   
                       </tr>
                   </thead>  
                 </table>
@@ -88,80 +88,251 @@
                                                     <input type="text" name="telp" id="telp" class="form-control" placeholder="Telp" />
                                                 </div>
                                             </div> 
+                                            <div class="form-group">
+                                                <label for=""> Tinggi Badan (cm)</label>
+                                                <div class="form-line">
+                                                <input type="text" name="tinggi" id="tinggi" class="form-control" placeholder="Tinggi Badan" />
+                                                </div>
+                                            </div> 
 
                                           
                                         </div> 
 
-                                        <div class="col-sm-6">
-                                             <div class="form-group">
-                                                <label for=""> Tinggi Badan (cm)</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="tinggi" id="tinggi" class="form-control" placeholder="Tinggi Badan" />
+                                        <div class="col-sm-6">  
+                                            <div class="form-group"> 
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Berat Badan (Kg)</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Berat Badan (kg)</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="berat_badan" id="berat_badan" class="form-control" placeholder="Berat Badan" />
+
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Lemak Tubuh</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="lemak_tubuh" id="lemak_tubuh" class="form-control" placeholder="Lemak Tubuh" />
+
+                                                <div class="card-body">
+                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Berat Badan" class="form-control"> 
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for=""> Kadar Air</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="kadar_air" id="kadar_air" class="form-control" placeholder="Kadar Air" />
-                                                </div>
-                                            </div> 
-                                            <div class="form-group">
-                                                <label for=""> Massa Otot</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="masa_otot" id="masa_otot" class="form-control" placeholder="Massa Otot" />
-                                                </div>
+
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for=""> Kalori</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="kalori" id="kalori" class="form-control" placeholder="Kalori"  />
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Lemak Tubuh</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
                                                 </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                <input type="text" name="lemak_tubuh" id="lemak_tubuh" placeholder="Lemak Tubuh" class="form-control">
+                                                       <br>
+                                                        <span class="btn btn-primary btn-block"> Keterangan : </span>
+                                                        <table class="table table-bordered" style="text-align: center;">
+                                                            <thead style="font-weight:bold;"> 
+                                                            <tr>
+                                                                <td>Jenis Kelamin</td>
+                                                                <td>Usia Dibawah 30 Tahun</td>
+                                                                <td>Usia Diatas 30 Tahun</td>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td> Pria</td>
+                                                                <td> 14 - 20%</td>
+                                                                <td> 17 - 23%</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td> Wanita </td>
+                                                                <td> 17 - 24%</td>
+                                                                <td> 20 - 27%</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table> 
+                                                </div>
+
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for=""> Usia Sel</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="usia_sel" id="usia_sel" class="form-control" placeholder="Usia Sel"  />
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Kadar Air</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
                                                 </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                        <input type="text" name="kadar_air" id="kadar_air" placeholder="Kadar Air" class="form-control">
+                                                        <br>
+                                                        <span class="btn btn-primary btn-block"> Keterangan : </span>
+                                                        <table class="table table-bordered" style="text-align: center;">
+                                                            <thead style="font-weight:bold;"> 
+                                                                <tr>
+                                                                    <td>Pria</td>
+                                                                    <td>Wanita </td> 
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td> 50 - 55%</td> 
+                                                                    <td> 60 - 65%</td> 
+                                                                </tr> 
+                                                            </tbody>
+                                                        </table> 
+                                                </div>
+
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for=""> Massa Tulang</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="masa_tulang" id="masa_tulang" class="form-control" placeholder="Massa Tulang"  />
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Rating Fisik (VFR)</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
                                                 </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                             
+                                                        <input type="text" name="rating_fisik" id="rating_fisik" placeholder="Rating Fisik" class="form-control">
+                                                        <br>
+                                                        <span class="btn btn-primary btn-block"> Keterangan : </span>
+                                                        <table class="table table-bordered" style="text-align: center;">
+                                                            <thead style="font-weight:bold; font-size:30px;"> 
+                                                                <tr>
+                                                                    <td>1 - 9</td> 
+                                                                </tr>
+                                                            </thead> 
+                                                        </table> 
+                                                </div>
+
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for=""> Lemak Perut</label>
-                                                <div class="form-line">
-                                                    <input type="text" name="lemak_perut" id="lemak_perut" class="form-control" placeholder="Lemak Perut" />
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Kalori</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
                                                 </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                        <select name="kalori" id="kalori" class="form-control">
+                                                            <option value="">--Pilih--</option>
+                                                            <option value="1">Cara Langsing</option>
+                                                            <option value="2">Cara Sehat</option>
+                                                            <option value="3">Cara Gemuk</option> 
+                                                        </select>
+                                                </div>
+
                                             </div>
+
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Usia Sel</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                                </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                        <select name="kalori" id="kalori" class="form-control">
+                                                            <option value="">--Pilih--</option>
+                                                            <option value="1"> < Muda</option>
+                                                            <option value="2"> = Umur </option>
+                                                            <option value="3"> > Tua</option> 
+                                                        </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Masa Tulang</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                                </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                        <input type="text" name="masa_tulang" id="masa_tulang" placeholder="Masa Tulang" class="form-control">
+                                                        <br>
+                                                        <span class="btn btn-primary btn-block"> Keterangan : </span>
+                                                        <table class="table table-bordered" style="text-align: center;">
+                                                            <thead style="font-weight:bold;"> 
+                                                            <tr>
+                                                                <td>Wanita</td>
+                                                                <td> < 50kg <br> 1.95kg </td>
+                                                                <td> 50-70kg <br> 2.40kg </td>
+                                                                <td> < 70kg <br> 2.95kg </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Pria</td>
+                                                                <td> < 65kg <br> 2.65kg </td>
+                                                                <td> 66-95kg <br> 3.29kg </td>
+                                                                <td> < 95kg <br> 3.29kg </td>
+                                                            </tr>
+                                                            </thead>
+                                                            
+                                                        </table> 
+                                                </div>
+
+                                            </div>
+
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">Lemak Perut</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                                </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                        <input type="text" name="lemak_perut" id="lemak_perut" placeholder="Lemak Perut" class="form-control">
+                                                        <br>
+                                                        <span class="btn btn-primary btn-block"> Keterangan : </span>
+                                                        <table class="table table-bordered" style="text-align: center;">
+                                                            <thead style="font-weight:bold; font-size:30px;"> 
+                                                                <tr>
+                                                                    <td>Sehat</td>
+                                                                    <td>Hati- Hati </td>
+                                                                    <td>Bahaya </td> 
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody style="font-weight:bold; font-size:30px;"> 
+                                                                <tr>
+                                                                    <td> 1-4</td> 
+                                                                    <td> 5-9</td> 
+                                                                    <td> 10-15</td> 
+                                                                </tr> 
+                                                            </tbody>
+                                                        </table> 
+                                                </div>
+
+                                            </div>
+     
                                         </div> 
                                     </div> 
  
                                     
                                      <br>
                                      <hr>
-                                   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
-                                   <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
+                                   <button type="button" onclick="Simpan_Data();" class="btn btn-block btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
+                                   <br> &nbsp;
+                                   <button type="button" name="cancel" id="cancel" class="btn btn-block  btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
                              </form>
                        </div>
                      
@@ -255,9 +426,19 @@
 								<td> : </td>
 								<td> <p id="lemakperutdtl"> </p> </td>
 								
-								<td style="font-weight:bold;">  </td>
+								<td style="font-weight:bold;">  Massa Otot</td>
 								<td>  </td>
-								<td> <p id="masatulangdtl">   </td> 
+								<td> <p id="masaototdtl">   </td> 
+							</tr> 
+
+                            <tr>
+								<td style="font-weight:bold;"> Rating Fisik (VFR)</td>
+								<td> : </td>
+								<td> <p id="ratingfisikdtl"> </p> </td>
+								
+								<td style="font-weight:bold;"> BMI   </td>
+								<td> : </td>
+								<td>  <p id="bmidtl"> </p>  </td> 
 							</tr> 
 						 
 							 <div class="modal-footer">
@@ -272,6 +453,86 @@
     </div>
 
   <script>  
+
+        $.fn.pressEnter = function(fn) {  
+        
+        return this.each(function() {  
+            $(this).bind('enterPress', fn);
+            $(this).keyup(function(e){
+                if(e.keyCode == 13)
+                {
+                    $(this).trigger("enterPress");
+                }
+            })
+        });  
+        }; 
+
+      
+
+        $("#lemak_tubuh").pressEnter(function(){
+            var usia = $("#usia").val();
+            var jenkel = $("#jenkel").val(); 
+            var lemak_tubuh = $(this).val();
+
+            if(usia == '' || usia == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Usia Belum Anda Isi...!'
+                })
+                usia.focus();
+            }else if(jenkel == '' || jenkel == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Jenis Kelamin Belum Anda Isi...!'
+                })
+            }else{
+                $.ajax({
+                    url:"<?php echo base_url('calculate/lemak_service'); ?>",
+                    data:{usia:usia,jenkel:jenkel,lemak_tubuh:lemak_tubuh},
+                    type:"POST",
+                    success:function(response){
+                        var resp = JSON.parse(response);
+                        // var regex = /<br\s*[\/]?>/gi;
+                        // console.log(resp.icon);
+                        // var result = 'Hasil Timbangan Anda : '+resp.timbangan+ '% \nl2br Keterangan : ' +resp.keterangan;
+                        Swal.fire({
+                        icon:  resp.icon,
+                        title:  resp.title,  
+                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' % </b>' +
+                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
+                        }) 
+                    }
+                })
+            }
+            
+        });
+
+
+        $("#rating_fisik").pressEnter(function(){
+          
+            var rating_fisik = $(this).val();
+ 
+                $.ajax({
+                    url:"<?php echo base_url('calculate/rating_fisik'); ?>",
+                    data:{rating_fisik:rating_fisik},
+                    type:"POST",
+                    success:function(response){
+                        var resp = JSON.parse(response);
+                       
+                        Swal.fire({
+                        icon:  resp.icon,
+                        title:  resp.title,  
+                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' </b>' +
+                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
+                        }) 
+                    }
+                })
+            
+            
+        });
+
         $("#priabtn").on("click",function(){
             $("#jenkel").val('1');
             $(this).attr('class','btn btn-primary');
@@ -307,6 +568,8 @@
                  $("#usia_sel").val(result.usia_sel);   
                  $("#masa_tulang").val(result.masa_tulang);   
                  $("#lemak_perut").val(result.lemak_perut);  
+                 $("#rating_fisik").val(result.rating_fisik);
+                 $("#bmi").val(result.bmi);  
                  if(result.jenkel == '1'){
                     $("#priabtn").attr('class','btn btn-primary');
                     $("#wanitabtn").attr('class','btn btn-default');
@@ -343,6 +606,9 @@
                  $("#usiaseldtl").html(result.usia_sel); 
                  $("#masatulangdtl").html(result.masa_tulang); 
                  $("#lemakperutdtl").html(result.lemak_perut); 
+                 $("#masaototdtl").html(result.masa_otot); 
+                 $("#ratingfisikdtl").html(result.rating_fisik); 
+                 $("#bmidtl").html(result.bmi); 
 			 }
 		 });
 	 }
@@ -374,7 +640,17 @@
     } 
    
     function Simpan_Data(){ 
-         var formData = new FormData($('#user_form')[0]);   
+        var lemak = $("#lemak").val();
+        if(lemak == '' || lemak == null){ 
+            Swal.fire({
+                title: 'Error!',
+                text: 'Lemak Belum Diisi!',
+                icon: 'error',
+                confirmButtonText: 'OK!'
+                })
+        }else{
+        
+            var formData = new FormData($('#user_form')[0]);   
             //transaksi dibelakang layar
             $.ajax({
              url:"<?php echo base_url(); ?>member/simpan_data",
@@ -390,7 +666,9 @@
                  toastr.success('Data Berhasil Disimpan');
               
              }
-            });  
+            });
+        }
+      
     }  
     
     $(document).ready(function() {

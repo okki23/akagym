@@ -4,10 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Calculate extends Parent_Controller {
  
-  var $nama_tabel = 't_perhitungan';
-  var $daftar_field = array('id','id_member','date_submit','id_bmi','bmi_value','bmi_reason','bone_value','id_bone','bone_reason','id_calori','jenkel_calori_value','calori_value','calori_reason','id_fat','fat_value','fat_reason','id_muscle','muscle_value','muscle_reason','id_vfr','vfr_value','vfr_reason','id_water','water_value','water_reason','jenkel_water_value');
-  var $primary_key = 'id';
+//   var $nama_tabel = 't_perhitungan';
+//   var $daftar_field = array('id','id_member','date_submit','id_bmi','bmi_value','bmi_reason','bone_value','id_bone','bone_reason','id_calori','jenkel_calori_value','calori_value','calori_reason','id_fat','fat_value','fat_reason','id_muscle','muscle_value','muscle_reason','id_vfr','vfr_value','vfr_reason','id_water','water_value','water_reason','jenkel_water_value');
+//   var $primary_key = 'id';
   
+	var $nama_tabel = 't_calculate';
+  	var $daftar_field = array('id','id_member','date_submit','fat','vfr','masa_otot','masa_tulang','kadar_air','kalori','usia_sel','lemak_perut');
+  	var $primary_key = 'id';
+
  	public function __construct(){
  		parent::__construct();
  		$this->load->model('m_calculate'); 
@@ -264,7 +268,309 @@ class Calculate extends Parent_Controller {
 					</div>
 				</div>";
 	}
+	
+	public function rating_fisik(){
+		$rating_fisik = $this->input->post('rating_fisik');
+		
+		if($rating_fisik >= 1 && $rating_fisik <=5){
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Good','icon'=>'success');
+		}else if($rating_fisik >= 5 && $rating_fisik <=9){
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Normal','icon'=>'success');
+		}else if($rating_fisik >= 9 && $rating_fisik <=15){
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Tidak Sehat','icon'=>'warning');
+		}else if($rating_fisik >= 15 && $rating_fisik <=20){
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Sangat Berbahaya','icon'=>'danger');
+		}
+		echo json_encode($arr_response);
+	}
+	public function lemak_service(){
+		$lemak_tubuh = $this->input->post('lemak_tubuh');
+		$usia = $this->input->post('usia');
+		$jenkel = $this->input->post('jenkel'); 
+
+		if($jenkel == 1){ //pria
+			if($usia <= 30 && $usia <= 30){ //under 30
+			 
+				if($lemak_tubuh >= 14 && $lemak_tubuh <=20){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+				}else if($lemak_tubuh >= 20 && $lemak_tubuh <=25){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+					<table class="table table-bordered" style="text-align:left;">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+								<table class="table table-bordered">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+							}else if($lemak_tubuh < 14 ){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+							 
+							}else if($lemak_tubuh < 45){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								 
+							}
+			}else{ //up 30
+				if($lemak_tubuh >= 17 && $lemak_tubuh <=23){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+				}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+					<table class="table table-bordered" style="text-align:left;">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+								<table class="table table-bordered">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+							}else if($lemak_tubuh < 14 ){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+							 
+							}else if($lemak_tubuh < 45){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								 
+							}
+			}
+		}else{//wanita
+			if($usia <= 30 && $usia <= 30){ //under 30
+			 
+				if($lemak_tubuh >= 17 && $lemak_tubuh <=24){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+				}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+					<table class="table table-bordered" style="text-align:left;">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+								<table class="table table-bordered">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+							}else if($lemak_tubuh < 17 ){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+							 
+							}else if($lemak_tubuh < 45){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								 
+							}
+			}else{ //up 30
+				if($lemak_tubuh >= 20 && $lemak_tubuh <=27){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+				}else if($lemak_tubuh >= 27 && $lemak_tubuh <=30){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){ 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'danger','title'=>'Bahaya');
+				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+					<table class="table table-bordered" style="text-align:left;">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
+								<table class="table table-bordered">
+								<tr>
+									<td> 1. Pemicu Jantung </td>
+								</tr>
+								<tr>
+									<td> 2. Pemicu Stroke </td>
+								</tr>
+								<tr>
+									<td> 3. Pemicu Darah Tinggi </td>
+								</tr>
+								<tr>
+									<td> 4. Pemicu Kolesterol </td>
+								</tr>
+								<tr>
+									<td> 5. Pemicu Diabetes </td>
+								</tr>
+							</table>','icon'=>'error','title'=>'Bahaya'); 
+							}else if($lemak_tubuh < 14 ){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+							 
+							}else if($lemak_tubuh < 45){
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								 
+							}
+			}
+		}
+			echo json_encode($arr_response);
 	 
+		// }else{ //wanita
+		// 	if($query->usia <= 30 && $query->usia <= 30)  
+		// 	{ //under 30 
+		// 		echo "<h3> Hasil Penimbangan : ".$lemak_tubuh." % </h3>";
+		// 		if($lemak_tubuh >= 17 && $lemak_tubuh <= 24){
+		// 			echo "<br> <b> Keterangan :Good </b> ";
+		// 		}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
+		// 			echo "<br> <b>  Keterangan : Normal </b> ";
+		// 		}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){
+		// 			echo "<br> <b> Keterangan : Obesitas Ringan </b> ";
+		// 		}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 2 </h3>";
+		// 		}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 3 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
+		// 			<h4>
+		// 			1. Pemicu Jantung <br>
+		// 			2. Pemicu Stroke <br>
+		// 			3. Pemicu Darah Tinggi <br>
+		// 			4. Pemicu Kolesterol </h4>";
+		// 		}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 4 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
+		// 			<h4>
+		// 			1. Pemicu Jantung <br>
+		// 			2. Pemicu Stroke <br>
+		// 			3. Pemicu Darah Tinggi <br>
+		// 			4. Pemicu Kolesterol </h4>";
+		// 		}else if($lemak_tubuh < 17 ){
+		// 			echo "<br> <b> Keterangan : Terlalu Minim </b> "; //reason
+		// 		}else if($lemak_tubuh < 45){
+		// 			echo "<br> <b> Keterangan : Obesitas Berbahaya </b> "; //reason
+		// 		}
+		// 	}else{ //up 30
+		// 		echo "<h3> Hasil Penimbangan : ".$lemak_tubuh." % </h3>";
+		// 		if($lemak_tubuh >= 20 && $lemak_tubuh <=27){
+		// 			echo "<br> <b> Keterangan :Good </b> ";
+		// 		}else if($lemak_tubuh >= 27 && $lemak_tubuh <=30){
+		// 			echo "<br> <b> Keterangan : Obesitas Ringan </b> ";
+		// 		}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 2 </h3>";
+		// 		}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 3 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
+		// 			<h4>
+		// 			1. Pemicu Jantung <br>
+		// 			2. Pemicu Stroke <br>
+		// 			3. Pemicu Darah Tinggi <br>
+		// 			4. Pemicu Kolesterol </h4>";
+		// 		}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
+		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 4 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
+		// 			<h4>
+		// 			1. Pemicu Jantung <br>
+		// 			2. Pemicu Stroke <br>
+		// 			3. Pemicu Darah Tinggi <br>
+		// 			4. Pemicu Kolesterol </h4>";
+		// 		}
+		// 	}
+		// } 
+		
+	}
 	public function get_data_edit(){
 		$id = $this->uri->segment(3); 
 		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
@@ -305,10 +611,10 @@ class Calculate extends Parent_Controller {
 	public function simpan_data(){
     
     	
-		$data_form = $this->m_calculate->array_from_post($this->daftar_field);
+		$data_form = $this->m_calculate->array_from_post($this->daftar_field); 
 		$data_form['date_submit'] = date('Y-m-d H:i:s');
 		$id = isset($data_form['id']) ? $data_form['id'] : NULL; 
-	 
+		
 	
 		$simpan_data = $this->m_calculate->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
 	 
@@ -322,77 +628,20 @@ class Calculate extends Parent_Controller {
 	
 	}
 
-	
-	public function print()
-	{
-		$id = $this->uri->segment(3);
-		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
-		d.option as optionbone,
-		e.min as minfat,e.max as maxfat,e.reason as reasonfat,
-		f.min as minmuscle,f.max as maxmuscle,f.reason as reasonmuscle,
-		g.min as minvfr,g.max as maxvfr,g.reason as reasonvfr,
-		h.min as mincalori,h.max as maxcalori,h.reason as reasoncalori,case when h.jk = 1 then 'Pria' else 'Wanita' end as jkcalori,
-		i.min as minwater,i.max as maxwater,i.reason as reasonwater,case when i.jk = 1 then 'Pria' else 'Wanita' end as jkwater 
-		from t_perhitungan a
-		left join m_member b on b.id = a.id_member
-		left join bmi_setting c on c.id = a.id_bmi
-		left join bone_setting d on d.id = a.id_bone
-		left join fat_setting e on e.id = a.id_fat
-		left join muscle_setting f on f.id = a.id_muscle
-		left join vfr_setting g on g.id = a.id_vfr
-		left join calori_setting h on h.id = a.id_calori
-		left join water_setting i on i.id = a.id_water
-		where a.id  = '".$id."' ")->row();
-
-		// echo $id; die();
-		$pdf = new \TCPDF();
-		$pdf->AddPage('L', 'mm', 'A4');
-		$pdf->SetFont('', 'B', 14);
-		// $pdf->Image('assets/backend/dist/img/akalogo.png', 15, 140, 75, 113, 'JPG', 'http://www.tcpdf.org', '', true, 150, '', false, false, 1, false, false, false);
-
-		$pdf->Cell(277, 10, "LISTING PERHITUNGAN AKTUAL MEMBER ".$get->no_reg." - ".$get->nama, 0, 1, 'C');
-		$pdf->SetAutoPageBreak(true, 0);
-		// Add Header
-		$pdf->Ln(10);
-		$pdf->SetFont('', 'B', 12);
-		$pdf->Cell(20, 8, "No", 1, 0, 'C');
-		$pdf->Cell(100, 8, "Nama Pegawai", 1, 0, 'C');
-		$pdf->Cell(120, 8, "Alamat", 1, 0, 'C');
-		$pdf->Cell(37, 8, "Telp", 1, 1, 'C');
-		$pdf->SetFont('', '', 12);
-		$pegawai = $this->db->get('m_member')->result();
-		$no=0;
-		foreach ($pegawai as $data){
-			$no++;
-			$pdf->Cell(20,8,$no,1,0, 'C');
-			$pdf->Cell(100,8,$data->nama,1,0);
-			$pdf->Cell(120,8,$data->alamat,1,0);
-			$pdf->Cell(37,8,$data->telp,1,1);
-		}
-		$pdf->SetFont('', 'B', 10);
-		$pdf->Cell(277, 10, "Laporan Pdf Menggunakan Tcpdf, Instalasi Tcpdf Via Composer", 0, 1, 'L');
-		$pdf->Output('Laporan Member.pdf'); 
-	}
-       
+	 
 
   public function cetak_data(){
-		$id = $this->uri->segment(3); 
-		$get = $this->db->query("select a.*,b.no_reg,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents, c.max as maxbmi,c.min as minbmi,c.reason as reasonbmi,
-		d.option as optionbone,
-		e.min as minfat,e.max as maxfat,e.reason as reasonfat,
-		f.min as minmuscle,f.max as maxmuscle,f.reason as reasonmuscle,
-		g.min as minvfr,g.max as maxvfr,g.reason as reasonvfr,
-		h.min as mincalori,h.max as maxcalori,h.reason as reasoncalori,case when h.jk = 1 then 'Pria' else 'Wanita' end as jkcalori,
-		i.min as minwater,i.max as maxwater,i.reason as reasonwater,case when i.jk = 1 then 'Pria' else 'Wanita' end as jkwater 
-		from t_perhitungan a
-		left join m_member b on b.id = a.id_member
-		left join bmi_setting c on c.id = a.id_bmi
-		left join bone_setting d on d.id = a.id_bone
-		left join fat_setting e on e.id = a.id_fat
-		left join muscle_setting f on f.id = a.id_muscle
-		left join vfr_setting g on g.id = a.id_vfr
-		left join calori_setting h on h.id = a.id_calori
-		left join water_setting i on i.id = a.id_water
+		$id = $this->uri->segment(3);
+
+		// $query = $this->db->query("select a.*,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents from t_calculate a 
+		// left join m_member b on b.id = a.id_member where a.id = '".$id."' ")->row();
+ 
+		$get = $this->db->query("select a.*,a.masa_otot as masaototcal,a.bmi as bmical,a.lemak_perut as lemakperutcal,b.no_reg,b.*,
+		case when a.usia_sel = 1 then '< Muda' when a.usia_sel = 2 then '= Umur' else '>Tua' end as usiaselcal,
+		case when a.kalori = 1 then 'Cara Langsing' when a.usia_sel = 2 then 'Cara Sehat' else 'Cara Gemuk' end as kalorical,
+		case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents 
+		from t_calculate a
+		left join m_member b on b.id = a.id_member 
 		where a.id  = '".$id."' ")->row(); 
 		$data['trans'] = $get;
    			$this->load->library("pdf");

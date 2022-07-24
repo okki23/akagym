@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Member extends Parent_Controller {
  
   var $nama_tabel = 'm_member';
-  var $daftar_field = array('id','no_reg','nama','tgl_daftar','jenkel','telp','alamat','usia','tinggi','berat_badan','lemak_tubuh','kadar_air','masa_otot','kalori','usia_sel','masa_tulang','lemak_perut');
+  var $daftar_field = array('id','no_reg','nama','tgl_daftar','jenkel','telp','alamat','usia','tinggi','berat_badan','lemak_tubuh','kadar_air','masa_otot','kalori','usia_sel','masa_tulang','lemak_perut','rating_fisik','bmi');
   var $primary_key = 'id';
   
  	public function __construct(){
@@ -103,7 +103,7 @@ class Member extends Parent_Controller {
 		$sql = $this->db->query('select *, CASE jenkel
 		WHEN 1 THEN "Pria" 
 		ELSE "Wanita"
-		END as "gents" from m_member')->row(); 
+		END as "gents" from m_member where id = "'.$id.'" ')->row(); 
 		echo json_encode($sql,TRUE);
 	}
 	 

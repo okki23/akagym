@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 04/07/2022 14:49:30
+ Date: 17/07/2022 11:04:43
 */
 
 SET NAMES utf8mb4;
@@ -102,11 +102,12 @@ CREATE TABLE `m_jabatan`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_jabatan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_jabatan
 -- ----------------------------
+INSERT INTO `m_jabatan` VALUES (1, 'Admin');
 
 -- ----------------------------
 -- Table structure for m_karyawan
@@ -125,11 +126,13 @@ CREATE TABLE `m_karyawan`  (
   `tinggi_badan` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `foto` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_karyawan
 -- ----------------------------
+INSERT INTO `m_karyawan` VALUES (1, '667577', 'Dodo', NULL, 'bekasi', 'dodo@mail.com', 1, '1', '76756', '120', NULL);
+INSERT INTO `m_karyawan` VALUES (2, '45434', 'Jojo', NULL, 'Bekasi', 'akagymgalaxy@gmail.com', 1, '1', '90289343', '22', NULL);
 
 -- ----------------------------
 -- Table structure for m_measure
@@ -167,13 +170,17 @@ CREATE TABLE `m_member`  (
   `usia_sel` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `masa_tulang` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `lemak_perut` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `rating_fisik` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `bmi` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_member
 -- ----------------------------
-INSERT INTO `m_member` VALUES (1, '2022-06-26', '202206260000001', 'Adi Karyadi', '1', '2342344', 'Bekasi', '22', '23', '54', '23', '65', '56', '63', '45', '54', '45');
+INSERT INTO `m_member` VALUES (1, '2022-07-16', '202206260000001', 'Adi Karyadi', '1', '2342344', 'Bekasi', '30', '23', '54', '23', '65', '56', '63', '45', '54', '45', '5', 44);
+INSERT INTO `m_member` VALUES (2, '2022-07-15', '202207040000002', 'yyaa', '1', '68458345', 'bekasi', '22', '12', '33', '33', '66', '4', '4', '54', '54', '66', '7', NULL);
+INSERT INTO `m_member` VALUES (3, '2022-07-16', '202207160000003', 'hha', '1', 'S4677', 'AQ', '29', '175', '60', '21', '60', '38', '1678', '34', '7.8', '3', '1', 22);
 
 -- ----------------------------
 -- Table structure for m_user
@@ -186,12 +193,13 @@ CREATE TABLE `m_user`  (
   `id_pegawai` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `level` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_user
 -- ----------------------------
 INSERT INTO `m_user` VALUES (1, 'admin', 'YQ==', '5', 1);
+INSERT INTO `m_user` VALUES (2, 'dodo', 'YQ==', 'bekasi', 1);
 
 -- ----------------------------
 -- Table structure for muscle_setting
@@ -213,6 +221,32 @@ INSERT INTO `muscle_setting` VALUES (2, 26, 30, 'B');
 INSERT INTO `muscle_setting` VALUES (3, 31, 35, 'C');
 INSERT INTO `muscle_setting` VALUES (4, 36, 40, 'D');
 INSERT INTO `muscle_setting` VALUES (5, 41, 45, 'E');
+
+-- ----------------------------
+-- Table structure for t_calculate
+-- ----------------------------
+DROP TABLE IF EXISTS `t_calculate`;
+CREATE TABLE `t_calculate`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_member` int(11) NULL DEFAULT NULL,
+  `date_submit` datetime NULL DEFAULT NULL,
+  `fat` int(11) NULL DEFAULT NULL,
+  `vfr` int(11) NULL DEFAULT NULL,
+  `masa_otot` int(11) NULL DEFAULT NULL,
+  `masa_tulang` int(11) NULL DEFAULT NULL,
+  `kadar_air` int(11) NULL DEFAULT NULL,
+  `kalori` int(11) NULL DEFAULT NULL,
+  `usia_sel` int(11) NULL DEFAULT NULL,
+  `lemak_perut` int(11) NULL DEFAULT NULL,
+  `bmi` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_calculate
+-- ----------------------------
+INSERT INTO `t_calculate` VALUES (3, 1, '2022-07-15 09:08:46', 38, 2, 35, 2, 3, 2, 3, 5, 30);
+INSERT INTO `t_calculate` VALUES (4, 3, '2022-07-16 12:56:35', 21, 4, 3, 8, 60, 1, NULL, 3, NULL);
 
 -- ----------------------------
 -- Table structure for t_perhitungan
@@ -246,11 +280,13 @@ CREATE TABLE `t_perhitungan`  (
   `water_reason` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `jenkel_water_value` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_perhitungan
 -- ----------------------------
+INSERT INTO `t_perhitungan` VALUES (1, 1, '2022-07-04 07:50:31', 99, 11, 'dd', 1, 0, '', 1, '', 0, '', 1, 0, '', 1, 0, '', 3, 0, '', 1, 0, '', '');
+INSERT INTO `t_perhitungan` VALUES (2, 2, '2022-07-04 12:53:57', 1, 0, '', 2, 0, '', 2, '', 0, '', 3, 0, '', 1, 0, '', 4, 0, '', 1, 0, '', '');
 
 -- ----------------------------
 -- Table structure for vfr_setting

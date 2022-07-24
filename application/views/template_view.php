@@ -73,6 +73,9 @@
     <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url('assets/backend/'); ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AdminLTE App -->
     <style>
       .modal-body {
@@ -127,7 +130,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
  
-    <a href="index3.html" class="brand-link">
+    <a href="<?php echo base_url('dashboard'); ?>" class="brand-link">
       <img src="<?php echo base_url('assets/backend/dist/img/akalogo.png'); ?>" alt="AdminLTE Logo" class="brand-image  elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light"> AKAGYM</span>
     </a>
@@ -141,16 +144,23 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
+           <li class="nav-item">
+            <a href="<?php echo base_url('dashboard'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+              <p>
+                Dashboard 
+              </p>
+            </a>
+          </li>
           <li class="nav-header">MASTER DATA</li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?php echo base_url('measure'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
                 Ukuran 
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="<?php echo base_url('user'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
@@ -183,13 +193,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">SETTING</li>
-          <li class="nav-item">
+          <!-- <li class="nav-header">SETTING</li> -->
+          <!-- <li class="nav-item">
             <a href="<?php echo base_url('fat_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Fat Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                Fat Setting 
               </p>
             </a>
           </li>
@@ -197,8 +206,7 @@
             <a href="<?php echo base_url('bmi_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                BMI Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                BMI Setting 
               </p>
             </a>
           </li>
@@ -206,8 +214,7 @@
             <a href="<?php echo base_url('muscle_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Muscle Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                Muscle Setting 
               </p>
             </a>
           </li>
@@ -215,8 +222,7 @@
             <a href="<?php echo base_url('vfr_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                VFR Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                VFR Setting 
               </p>
             </a>
           </li>
@@ -224,8 +230,7 @@
             <a href="<?php echo base_url('water_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Water Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                Water Setting 
               </p>
             </a>
           </li>
@@ -233,8 +238,7 @@
             <a href="<?php echo base_url('calori_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Calori Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                Calori Setting 
               </p>
             </a>
           </li>
@@ -242,22 +246,20 @@
             <a href="<?php echo base_url('bone_setting'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Bone Setting
-                <!-- <span class="badge badge-info right">2</span> -->
+                Bone Setting 
               </p>
             </a>
-          </li>
+          </li> 
           <li class="nav-item">
             <a href="<?php echo base_url('calculate'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Perhitungan Sistem
-                <!-- <span class="badge badge-info right">2</span> -->
+                Perhitungan Sistem 
               </p>
             </a>
           </li>
            
-          
+          -->
            
            
         </ul>
@@ -268,7 +270,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-image:url('<?php echo base_url("assets/backend/dist/img/bgimage.jpeg"); ?>');  background-repeat: no-repeat;  background-attachment: fixed;  background-position: 100% 100%; );  ">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -288,8 +290,8 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+    <section class="content" >
+      <div class="container-fluid" >
         <!-- Small boxes (Stat box) -->
 
         <?php 
