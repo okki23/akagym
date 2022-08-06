@@ -4,9 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Calculate extends Parent_Controller {
  
-//   var $nama_tabel = 't_perhitungan';
-//   var $daftar_field = array('id','id_member','date_submit','id_bmi','bmi_value','bmi_reason','bone_value','id_bone','bone_reason','id_calori','jenkel_calori_value','calori_value','calori_reason','id_fat','fat_value','fat_reason','id_muscle','muscle_value','muscle_reason','id_vfr','vfr_value','vfr_reason','id_water','water_value','water_reason','jenkel_water_value');
-//   var $primary_key = 'id';
   
 	var $nama_tabel = 't_calculate';
   	var $daftar_field = array('id','id_member','date_submit','fat','vfr','masa_otot','masa_tulang','kadar_air','kalori','usia_sel','lemak_perut');
@@ -314,6 +311,76 @@ class Calculate extends Parent_Controller {
 		echo json_encode($arr_response);
 	}
 
+	public function kalori_service(){
+		 
+		$jenkel = $this->input->post('jenkel'); 
+		$kalori_val = $this->input->post('kalori_val');
+		 
+		if($jenkel == 1){//pria
+			// echo "pria";
+			if($kalori_val >= 1500 && $kalori_val <=1800){   
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','icon'=>'success','option'=>1,'title'=>'Cara Sehat & Langsing'));
+			}else if($kalori_val >1800){
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','icon'=>'success','option'=>2,'title'=>'Cara Gemuk'));
+			} 
+		}else{//wanita
+			// echo "wanita";
+			if($kalori_val >= 1200 && $kalori_val <=1500){   
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','icon'=>'success','option'=>1,'title'=>'Cara Sehat & Langsing'));
+			}else if($kalori_val >1500){
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','icon'=>'success','option'=>2,'title'=>'Cara Gemuk'));
+			} 
+		}
+		// echo "<br>".$kalori_val;
+	}
+
+	public function bmi_service(){
+		$bmi = $this->input->post('bmi');
+		$usia = $this->input->post('usia');
+		$jenkel = $this->input->post('jenkel'); 
+
+		if($jenkel == 1){ //pria  
+			if($usia >= 18 && $usia <=27){
+
+				if($bmi >= 18 && $bmi <=22){
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good'); 
+				}else{
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+				}
+			 
+			}else if($usia >= 28 && $usia <=40){
+				if($bmi >= 23 && $bmi <=27){ 
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+				}else if($bmi > 27){  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');      
+				}
+			}else{
+				// echo 'Out Of Range';//reason
+				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','icon'=>'error','title'=>'Bahaya');      
+			}
+		}else{ 
+			if($usia >= 18 && $usia <=27){
+
+				if($bmi >= 19 && $bmi <=23){  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+				}else{
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+				}
+		 
+			}else if($usia >= 28 && $usia <=40){
+				if($bmi >= 24 && $bmi <=28){  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+				}else if($bmi > 28){
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+				}
+			}else{
+				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','icon'=>'error','title'=>'Bahaya');  
+			}
+	 
+		}
+		echo json_encode($arr_response);
+	}
+
 	public function lemak_tubuh_service(){
 		$lemak_tubuh = $this->input->post('lemak_tubuh');
 		$usia = $this->input->post('usia');
@@ -543,64 +610,7 @@ class Calculate extends Parent_Controller {
 			}
 		}
 			echo json_encode($arr_response);
-	 
-		// }else{ //wanita
-		// 	if($query->usia <= 30 && $query->usia <= 30)  
-		// 	{ //under 30 
-		// 		echo "<h3> Hasil Penimbangan : ".$lemak_tubuh." % </h3>";
-		// 		if($lemak_tubuh >= 17 && $lemak_tubuh <= 24){
-		// 			echo "<br> <b> Keterangan :Good </b> ";
-		// 		}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
-		// 			echo "<br> <b>  Keterangan : Normal </b> ";
-		// 		}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){
-		// 			echo "<br> <b> Keterangan : Obesitas Ringan </b> ";
-		// 		}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 2 </h3>";
-		// 		}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 3 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
-		// 			<h4>
-		// 			1. Pemicu Jantung <br>
-		// 			2. Pemicu Stroke <br>
-		// 			3. Pemicu Darah Tinggi <br>
-		// 			4. Pemicu Kolesterol </h4>";
-		// 		}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 4 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
-		// 			<h4>
-		// 			1. Pemicu Jantung <br>
-		// 			2. Pemicu Stroke <br>
-		// 			3. Pemicu Darah Tinggi <br>
-		// 			4. Pemicu Kolesterol </h4>";
-		// 		}else if($lemak_tubuh < 17 ){
-		// 			echo "<br> <b> Keterangan : Terlalu Minim </b> "; //reason
-		// 		}else if($lemak_tubuh < 45){
-		// 			echo "<br> <b> Keterangan : Obesitas Berbahaya </b> "; //reason
-		// 		}
-		// 	}else{ //up 30
-		// 		echo "<h3> Hasil Penimbangan : ".$lemak_tubuh." % </h3>";
-		// 		if($lemak_tubuh >= 20 && $lemak_tubuh <=27){
-		// 			echo "<br> <b> Keterangan :Good </b> ";
-		// 		}else if($lemak_tubuh >= 27 && $lemak_tubuh <=30){
-		// 			echo "<br> <b> Keterangan : Obesitas Ringan </b> ";
-		// 		}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 2 </h3>";
-		// 		}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 3 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
-		// 			<h4>
-		// 			1. Pemicu Jantung <br>
-		// 			2. Pemicu Stroke <br>
-		// 			3. Pemicu Darah Tinggi <br>
-		// 			4. Pemicu Kolesterol </h4>";
-		// 		}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
-		// 			echo "<h3 style='font-color:red;'> Keterangan : Obesitas Tingkat 4 <br> <br> Obesitas ini Memiliki Resiko  : </h3>
-		// 			<h4>
-		// 			1. Pemicu Jantung <br>
-		// 			2. Pemicu Stroke <br>
-		// 			3. Pemicu Darah Tinggi <br>
-		// 			4. Pemicu Kolesterol </h4>";
-		// 		}
-		// 	}
-		// } 
-		
+	  
 	}
 	public function get_data_edit(){
 		$id = $this->uri->segment(3); 
@@ -663,22 +673,14 @@ class Calculate extends Parent_Controller {
 
   public function cetak_data(){
 		$id = $this->uri->segment(3);
-
-		// $query = $this->db->query("select a.*,b.*,case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents from t_calculate a 
-		// left join m_member b on b.id = a.id_member where a.id = '".$id."' ")->row();
  
-		$get = $this->db->query("select a.*,a.masa_otot as masaototcal,a.bmi as bmical,a.lemak_perut as lemakperutcal,b.no_reg,b.*,
-		case when a.usia_sel = 1 then '< Muda' when a.usia_sel = 2 then '= Umur' else '>Tua' end as usiaselcal,
-		case when a.kalori = 1 then 'Cara Langsing' when a.usia_sel = 2 then 'Cara Sehat' else 'Cara Gemuk' end as kalorical,
-		case when b.jenkel = 1 then 'Pria' else 'Wanita' end as gents 
-		from t_calculate a
-		left join m_member b on b.id = a.id_member 
-		where a.id  = '".$id."' ")->row(); 
+ 
+		$get = $this->db->query("select * , case when jenkel = 1 then 'Pria' else 'Wanita' end as gents 
+		from m_member where id  = '".$id."' ")->row(); 
 		$data['trans'] = $get;
    			$this->load->library("pdf");
 			 
-			$this->pdf->setPrintHeader(false);
-			$this->pdf->setPrintFooter(true, 'aku', 'kau');
+			$this->pdf->setPrintHeader(false); 
 			$this->pdf->SetHeaderData("", "", 'Judul Header', "codedb.co");
 			$this->pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 			 // set auto page breaks

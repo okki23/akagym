@@ -68,7 +68,7 @@
                                             <div class="form-group">
                                                 <label for=""> Usia</label>
                                                 <div class="form-line">
-                                                    <input type="text" name="usia" id="usia" class="form-control"  placeholder="Usia"/>
+                                                    <input type="text" name="usia" id="usia" class="form-control" onkeypress="return /[0-9]/i.test(event.key)"  placeholder="Usia"/>
                                                 </div>
                                             </div>
 
@@ -85,13 +85,13 @@
                                             <div class="form-group">
                                                 <label for=""> Telp</label>
                                                 <div class="form-line">
-                                                    <input type="text" name="telp" id="telp" class="form-control" placeholder="Telp" />
+                                                    <input type="text" name="telp" id="telp" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Telp" />
                                                 </div>
                                             </div> 
                                             <div class="form-group">
                                                 <label for=""> Tinggi Badan (cm)</label>
                                                 <div class="form-line">
-                                                <input type="text" name="tinggi" id="tinggi" class="form-control" placeholder="Tinggi Badan" />
+                                                <input type="text" name="tinggi_badan" id="tinggi_badan" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Tinggi Badan" />
                                                 </div>
                                             </div> 
 
@@ -111,7 +111,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Masa Otot" class="form-control"> 
+                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Masa Otot" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
                                                 </div>
 
                                             </div>
@@ -127,7 +127,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="lemak_tubuh" id="lemak_tubuh" placeholder="Lemak Tubuh" class="form-control">
+                                                <input type="text" name="lemak_tubuh" id="lemak_tubuh" placeholder="Lemak Tubuh" onkeypress="return /[0-9]/i.test(event.key)" class="form-control">
                                                        <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -166,7 +166,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                        <input type="text" name="kadar_air" id="kadar_air" placeholder="Kadar Air" class="form-control">
+                                                        <input type="text" name="kadar_air" id="kadar_air" placeholder="Kadar Air" onkeypress="return /[0-9]/i.test(event.key)" class="form-control">
                                                         <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -199,7 +199,7 @@
 
                                                 <div class="card-body">
                                              
-                                                        <input type="text" name="rating_fisik" id="rating_fisik" placeholder="Rating Fisik" class="form-control">
+                                                        <input type="text" name="rating_fisik" id="rating_fisik" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Rating Fisik" class="form-control">
                                                         <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -212,6 +212,7 @@
                                                 </div>
 
                                             </div>
+
                                             <div class="card card-primary collapsed-card">
                                                 <div class="card-header">
                                                 <h3 class="card-title">Masa Otot</h3>
@@ -223,10 +224,27 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="masa_otot" id="masa_otot" placeholder="Masa Otot" class="form-control"> 
+                                                <input type="number" name="masa_otot" id="masa_otot" placeholder="Masa Otot" class="form-control"> 
                                                 </div>
 
                                             </div>
+
+                                            <div class="card card-primary collapsed-card">
+                                                <div class="card-header">
+                                                <h3 class="card-title">BMI</h3>
+                                                <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                                </button>
+                                                </div>
+
+                                                </div>
+
+                                                <div class="card-body">
+                                                <input type="text" name="bmi" id="bmi" placeholder="BMI" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
+                                                </div>
+
+                                            </div>
+
                                             <div class="card card-primary collapsed-card">
                                                 <div class="card-header">
                                                 <h3 class="card-title">Kalori</h3>
@@ -238,11 +256,12 @@
                                                 </div>
 
                                                 <div class="card-body">
+                                                    <input type="text" name="kalori_val" id="kalori_val"  onkeypress="return /[0-9]/i.test(event.key)" placeholder="Kalori Value" class="form-control"> 
+                                                    <br>
                                                         <select name="kalori" id="kalori" class="form-control">
                                                             <option value="">--Pilih--</option>
-                                                            <option value="1">Cara Langsing</option>
-                                                            <option value="2">Cara Sehat</option>
-                                                            <option value="3">Cara Gemuk</option> 
+                                                            <option value="1">Cara Sehat & Langsing</option> 
+                                                            <option value="2">Cara Gemuk</option> 
                                                         </select>
                                                 </div>
 
@@ -259,7 +278,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                        <select name="kalori" id="kalori" class="form-control">
+                                                        <select name="usia_sel" id="usia_sel" class="form-control">
                                                             <option value="">--Pilih--</option>
                                                             <option value="1"> < Muda</option>
                                                             <option value="2"> = Umur </option>
@@ -280,7 +299,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                        <input type="text" name="masa_tulang" id="masa_tulang" placeholder="Masa Tulang" class="form-control">
+                                                        <input type="text" name="masa_tulang" id="masa_tulang" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Masa Tulang" class="form-control">
                                                         <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -315,7 +334,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                        <input type="text" name="lemak_perut" id="lemak_perut" placeholder="Lemak Perut" class="form-control">
+                                                        <input type="text" name="lemak_perut" id="lemak_perut" placeholder="Lemak Perut" onkeypress="return /[0-9]/i.test(event.key)" class="form-control">
                                                         <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -379,7 +398,7 @@
 								<td> : </td>
 								<td> <p id="telpdtl"> </p> </td>
 								
-								<td style="font-weight:bold;"> Usia</td>
+								<td style="font-weight:bold;">                                                                                                                              </td>
 								<td> : </td>
 								<td> <p id="usiadtl"> </p> </td> 
                             </tr>
@@ -482,7 +501,29 @@
         }; 
 
       
+        $("#kalori_val").pressEnter(function(){ 
+            var jenkel = $("#jenkel").val(); 
+            var kalori_val = $(this).val();
 
+            if(jenkel == '' || jenkel == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Jenis Kelamin Belum Anda Isi...!'
+                })
+            }else{
+                $.ajax({
+                    url:"<?php echo base_url('calculate/kalori_service'); ?>",
+                    data:{kalori_val:kalori_val,jenkel:jenkel},
+                    type:"POST",
+                    success:function(response){  
+                        var resp = JSON.parse(response);
+                        console.log(resp.jenkel);
+                        $("#kalori").val(resp.option); 
+                    }
+                })
+            }
+        });
         $("#lemak_tubuh").pressEnter(function(){
             var usia = $("#usia").val();
             var jenkel = $("#jenkel").val(); 
@@ -570,10 +611,46 @@
                       }) 
                   }
               })
+            } 
+        });
+
+        $("#bmi").pressEnter(function(){
+            var usia = $("#usia").val();
+            var jenkel = $("#jenkel").val(); 
+            var bmi = $(this).val();
+
+            if(usia == '' || usia == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Usia Belum Anda Isi...!'
+                })
+                usia.focus();
+            }else if(jenkel == '' || jenkel == null){
+                Swal.fire({
+                icon: 'error',
+                title: 'Perhatian!',
+                text: 'Jenis Kelamin Belum Anda Isi...!'
+                })
+            }else{
+                $.ajax({
+                    url:"<?php echo base_url('calculate/bmi_service'); ?>",
+                    data:{usia:usia,jenkel:jenkel,bmi:bmi},
+                    type:"POST",
+                    success:function(response){
+                        var resp = JSON.parse(response);
+                       
+                        Swal.fire({
+                        icon:  resp.icon,
+                        title:  resp.title,  
+                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' % </b>' +
+                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
+                        }) 
+                    }
+                })
             }
-             
-           
-      });
+            
+        });
 
         $("#priabtn").on("click",function(){
             $("#jenkel").val('1');
@@ -682,34 +759,23 @@
     } 
    
     function Simpan_Data(){ 
-        var lemak = $("#lemak").val();
-        if(lemak == '' || lemak == null){ 
-            Swal.fire({
-                title: 'Error!',
-                text: 'Lemak Belum Diisi!',
-                icon: 'error',
-                confirmButtonText: 'OK!'
-                })
-        }else{
-        
+         
             var formData = new FormData($('#user_form')[0]);   
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>member/simpan_data",
-             type:"POST",
-             data:formData,
-             contentType:false,  
-             processData:false,   
-             success:function(result){ 
-                
-                 $("#defaultModal").modal('hide');
-                 $('#example1').DataTable().ajax.reload(); 
-                 $('#user_form')[0].reset();
-                 toastr.success('Data Berhasil Disimpan');
-              
-             }
+                url:"<?php echo base_url(); ?>member/simpan_data",
+                type:"POST",
+                data:formData,
+                contentType:false,  
+                processData:false,   
+                success:function(result){  
+                    $("#defaultModal").modal('hide');
+                    $('#example1').DataTable().ajax.reload(); 
+                    $('#user_form')[0].reset();
+                    toastr.success('Data Berhasil Disimpan'); 
+                }
             });
-        }
+      
       
     }  
     

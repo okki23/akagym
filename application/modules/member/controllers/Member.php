@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Member extends Parent_Controller {
  
   var $nama_tabel = 'm_member';
-  var $daftar_field = array('id','no_reg','nama','tgl_daftar','jenkel','telp','alamat','usia','tinggi','berat_badan','lemak_tubuh','kadar_air','masa_otot','kalori','usia_sel','masa_tulang','lemak_perut','rating_fisik','bmi');
+  var $daftar_field = array('id','no_reg','nama','alamat','usia','jenkel','telp','tinggi_badan','berat_badan','lemak_tubuh','kadar_air','rating_fisik','masa_otot','bmi','kalori','usia_sel','masa_tulang','lemak_perut','tgl_daftar');
   var $primary_key = 'id';
   
  	public function __construct(){
