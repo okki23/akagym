@@ -292,7 +292,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="usia_sel" id="usia_sel" placeholder="Usia Sel" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
+                                                <input type="text" name="usia_sel" id="usia_sel" placeholder="Usia Sel"  class="form-control"> 
                                                 </div>
 
                                             </div>
@@ -730,12 +730,9 @@
             type: "GET",
             dataType: "JSON",
             success: function(data)
-            {
-               
+            { 
                $('#example1').DataTable().ajax.reload(); 
-               toastr.success('Data Berhasil Dihapus');
-             
-                 
+               toastr.success('Data Berhasil Dihapus'); 
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -747,7 +744,7 @@
    
     function Simpan_Data(){ 
 
-            var container = ['nama','alamat','usia','jenkel','telp','tinggi_badan','berat_badan','lemak_tubuh','kadar_air','rating_fisik','masa_otot','bmi','kalori_val','kalori','usia_sel','masa_tulang','lemak_perut'];
+            var container = ['nama','alamat','usia','jenkel','telp','tinggi_badan','berat_badan','lemak_tubuh','kadar_air','rating_fisik','masa_otot','bmi','kalori','usia_sel','masa_tulang','lemak_perut'];
             var listing = [];
             i = 0;
             $.each(container, function( i, vals ) {  
@@ -759,12 +756,16 @@
                 }
  
             });
-          
-            if($.inArray(0, listing )){
-                
-            }else{
-                var formData = new FormData($('#user_form')[0]);   
-                //transaksi dibelakang layar
+            
+            console.log(listing);
+
+            if(jQuery.inArray(0, listing) != -1) {
+                alert('periksa kembali data anda!'); 
+                console.log("kaga bisa disimpen");
+            } else {
+                console.log("bisa disimpen");
+
+                var formData = new FormData($('#user_form')[0]);    
                 $.ajax({
                     url:"<?php echo base_url(); ?>member/simpan_data",
                     type:"POST",
@@ -778,10 +779,9 @@
                         toastr.success('Data Berhasil Disimpan'); 
                     }
                 });
-        
-            }
 
-          
+            } 
+ 
       
     }  
     
