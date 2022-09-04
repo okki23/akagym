@@ -270,13 +270,13 @@ class Calculate extends Parent_Controller {
 		$rating_fisik = $this->input->post('rating_fisik');
 		
 		if($rating_fisik >= 1 && $rating_fisik <=5){
-			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Good','icon'=>'success');
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Good','class'=>'btn btn-primary btn-block');
 		}else if($rating_fisik >= 5 && $rating_fisik <=9){
-			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Normal','icon'=>'success');
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block');
 		}else if($rating_fisik >= 9 && $rating_fisik <=15){
-			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Tidak Sehat','icon'=>'warning');
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Tidak Sehat','class'=>'btn btn-warning btn-block');
 		}else if($rating_fisik >= 15 && $rating_fisik <=20){
-			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Sangat Berbahaya','icon'=>'error');
+			$arr_response = array('timbangan'=>$rating_fisik,'keterangan'=>'Sangat Berbahaya','class'=>'btn btn-danger btn-block');
 		}
 		echo json_encode($arr_response);
 	}
@@ -287,23 +287,19 @@ class Calculate extends Parent_Controller {
 		 
 		if($jenkel == 1){ //pria  
 			if($masa_otot >= 35 && $masa_otot <=40){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');
 			}else if($masa_otot >= 40 && $masa_otot <=45){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Good','class'=>'btn btn-primary btn-block','title'=>'Baik');
 			}else if($masa_otot < 35){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk'); 
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','class'=>'btn btn-danger btn-block','title'=>'Buruk'); 
 			}else if($masa_otot > 45){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk');   
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','class'=>'btn btn-danger btn-block','title'=>'Buruk');   
 			}
 		}else{ //wanita
 			if($masa_otot >= 30 && $masa_otot <=35){   
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');
-			}else if($masa_otot >= 35 && $masa_otot <=40){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
-			}else if($masa_otot < 30){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk');  
-			}else if($masa_otot > 45){
-				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','icon'=>'error','title'=>'Buruk'); 
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');
+			}else if($masa_otot >= 35 && $masa_otot <=40){ 
+				$arr_response = array('timbangan'=>$masa_otot,'jenkel'=>$jenkel,'keterangan'=>'Sangat Buruk','class'=>'btn btn-danger btn-block','title'=>'Buruk'); 
 			}
 	 
 		}
@@ -319,19 +315,19 @@ class Calculate extends Parent_Controller {
 		if($jenkel == 1){//pria
 			// echo "pria";
 			if($kalori_val >= 1500 && $kalori_val <=1800){   
-				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','icon'=>'success','option'=>1,'title'=>'Cara Sehat & Langsing'));
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','class'=>'btn btn-primary btn-block','option'=>1,'title'=>'Cara Sehat & Langsing'));
 			}else if($kalori_val >1800){
-				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','icon'=>'success','option'=>2,'title'=>'Cara Gemuk'));
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','class'=>'btn btn-primary btn-block','option'=>2,'title'=>'Cara Gemuk'));
 			} 
 		}else{//wanita
 			// echo "wanita";
 			if($kalori_val >= 1200 && $kalori_val <=1500){   
-				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','icon'=>'success','option'=>1,'title'=>'Cara Sehat & Langsing'));
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Fat Loss, Weight Loss','class'=>'btn btn-primary btn-block','option'=>1,'title'=>'Cara Sehat & Langsing'));
 			}else if($kalori_val >1500){
-				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','icon'=>'success','option'=>2,'title'=>'Cara Gemuk'));
+				echo json_encode(array('timbangan'=>$kalori_val,'jenkel'=>$jenkel,'keterangan'=>'Bulking','class'=>'btn btn-primary btn-block','option'=>2,'title'=>'Cara Gemuk'));
 			} 
 		}
-		// echo "<br>".$kalori_val;
+ 
 	}
 
 	public function bmi_service(){
@@ -343,38 +339,37 @@ class Calculate extends Parent_Controller {
 			if($usia >= 18 && $usia <=27){
 
 				if($bmi >= 18 && $bmi <=22){
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good'); 
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','class'=>'btn btn-primary btn-block','title'=>'Good'); 
 				}else{
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','class'=>'btn btn-danger btn-block','title'=>'Bahaya');  
 				}
 			 
 			}else if($usia >= 28 && $usia <=40){
 				if($bmi >= 23 && $bmi <=27){ 
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','class'=>'btn btn-primary btn-block','title'=>'Good');  
 				}else if($bmi > 27){  
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');      
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','class'=>'btn btn-danger btn-block','title'=>'Bahaya');      
 				}
-			}else{
-				// echo 'Out Of Range';//reason
-				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','icon'=>'error','title'=>'Bahaya');      
+			}else{ 
+				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','class'=>'btn btn-danger btn-block','title'=>'Bahaya');      
 			}
 		}else{ 
 			if($usia >= 18 && $usia <=27){
 
 				if($bmi >= 19 && $bmi <=23){  
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','class'=>'btn btn-primary btn-block','title'=>'Good');  
 				}else{
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','class'=>'btn btn-danger btn-block','title'=>'Bahaya');  
 				}
 		 
 			}else if($usia >= 28 && $usia <=40){
 				if($bmi >= 24 && $bmi <=28){  
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','icon'=>'success','title'=>'Good');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'BMI Normal','class'=>'btn btn-primary btn-block','title'=>'Good');  
 				}else if($bmi > 28){
-					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','icon'=>'error','title'=>'Bahaya');  
+					$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Obesitas','class'=>'btn btn-danger btn-block','title'=>'Bahaya');  
 				}
 			}else{
-				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','icon'=>'error','title'=>'Bahaya');  
+				$arr_response = array('timbangan'=>$bmi,'jenkel'=>$jenkel,'usia'=>$usia,'keterangan'=>'Out Of Range','class'=>'btn btn-danger btn-block','title'=>'Bahaya');  
 			}
 	 
 		}
@@ -390,13 +385,13 @@ class Calculate extends Parent_Controller {
 			if($usia <= 30 && $usia <= 30){ //under 30
 			 
 				if($lemak_tubuh >= 14 && $lemak_tubuh <=20){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','class'=>'btn btn-primary btn-block','title'=>'Baik');
 				}else if($lemak_tubuh >= 20 && $lemak_tubuh <=25){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');	 
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','class'=>'btn btn-warning btn-block','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','class'=>'btn btn-danger btn-block','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -415,7 +410,7 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 								<table class="table table-bordered">
@@ -434,23 +429,23 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 							}else if($lemak_tubuh < 14 ){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','class'=>'info','title'=>'Dibawah Batas Baik');
 							 
 							}else if($lemak_tubuh < 45){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','class'=>'info','title'=>'Berbahaya');
 								 
 							}
 			}else{ //up 30
 				if($lemak_tubuh >= 17 && $lemak_tubuh <=23){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','class'=>'btn btn-primary btn-block','title'=>'Baik');
 				}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');	 
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','class'=>'btn btn-warning btn-block','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','class'=>'btn btn-danger btn-block','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -469,7 +464,7 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 								<table class="table table-bordered">
@@ -488,12 +483,12 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-primary btn-danger','title'=>'Bahaya'); 
 							}else if($lemak_tubuh < 14 ){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','class'=>'btn btn-primary btn-block','title'=>'Dibawah Batas Baik');
 							 
 							}else if($lemak_tubuh < 45){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','class'=>'btn btn-primary btn-block','title'=>'Berbahaya');
 								 
 							}
 			}
@@ -501,13 +496,13 @@ class Calculate extends Parent_Controller {
 			if($usia <= 30 && $usia <= 30){ //under 30
 			 
 				if($lemak_tubuh >= 17 && $lemak_tubuh <=24){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','class'=>'btn btn-primary btn-block','title'=>'Baik');
 				}else if($lemak_tubuh >= 24 && $lemak_tubuh <=25){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');	 
 				}else if($lemak_tubuh >= 25 && $lemak_tubuh <=30){ 
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','class'=>'btn btn-warning btn-block','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','class'=>'btn btn-danger btn-block','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -526,7 +521,7 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'error','title'=>'Bahaya'); 
 				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 								<table class="table table-bordered">
@@ -545,23 +540,23 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 							}else if($lemak_tubuh < 17 ){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','class'=>'btn btn-primary btn-block','title'=>'Dibawah Batas Baik');
 							 
 							}else if($lemak_tubuh < 45){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','class'=>'btn btn-primary btn-block','title'=>'Berbahaya');
 								 
 							}
 			}else{ //up 30
 				if($lemak_tubuh >= 20 && $lemak_tubuh <=27){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','icon'=>'success','title'=>'Baik');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Good','class'=>'btn btn-primary btn-block','title'=>'Baik');
 				}else if($lemak_tubuh >= 27 && $lemak_tubuh <=30){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','icon'=>'success','title'=>'Baik');	 
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Normal','class'=>'btn btn-primary btn-block','title'=>'Baik');	 
 				}else if($lemak_tubuh >= 30 && $lemak_tubuh <=35){ 
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','icon'=>'warning','title'=>'Hati-Hati');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Ringan','class'=>'btn btn-warning btn-block','title'=>'Hati-Hati');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
-					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','icon'=>'error','title'=>'Bahaya');
+					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 2','class'=>'btn btn-danger btn-block','title'=>'Bahaya');
 				}else if($lemak_tubuh >= 35 && $lemak_tubuh <=40){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 					<table class="table table-bordered" style="text-align:left;">
@@ -580,7 +575,7 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 				}else if($lemak_tubuh >= 40  && $lemak_tubuh <=45){
 					$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Obesitas Tingkat 4  Obesitas ini Memiliki Resiko  : <br> 
 								<table class="table table-bordered">
@@ -599,12 +594,12 @@ class Calculate extends Parent_Controller {
 								<tr>
 									<td> 5. Pemicu Diabetes </td>
 								</tr>
-							</table>','icon'=>'error','title'=>'Bahaya'); 
+							</table>','class'=>'btn btn-danger btn-block','title'=>'Bahaya'); 
 							}else if($lemak_tubuh < 14 ){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','icon'=>'info','title'=>'Dibawah Batas Baik');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Minim ','class'=>'btn btn-primary btn-block','title'=>'Dibawah Batas Baik');
 							 
 							}else if($lemak_tubuh < 45){
-								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','icon'=>'info','title'=>'Berbahaya');
+								$arr_response = array('timbangan'=>$lemak_tubuh,'usia'=>$usia,'jenkel'=>$jenkel,'keterangan'=>'Terlalu Berbahaya ','class'=>'btn btn-primary btn-block','title'=>'Berbahaya');
 								 
 							}
 			}
@@ -677,6 +672,7 @@ class Calculate extends Parent_Controller {
  
 		$get = $this->db->query("select * , case when jenkel = 1 then 'Pria' else 'Wanita' end as gents 
 		from m_member where id  = '".$id."' ")->row(); 
+ 
 		$data['trans'] = $get;
    			$this->load->library("pdf");
 			 

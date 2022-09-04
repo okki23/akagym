@@ -769,7 +769,7 @@ function Detail(id){
     function Simpan_Data(){ 
          var formData = new FormData($('#user_form')[0]);  
         
-
+            var 
             //transaksi dibelakang layar
             $.ajax({
              url:"<?php echo base_url(); ?>calculate/simpan_data",
@@ -799,6 +799,7 @@ function Detail(id){
     function CariMember(){
         $("#CariMemberModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
+    
     $(document).ready(function() {
  
         $("#fat").click(function(){

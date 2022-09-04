@@ -111,7 +111,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Masa Otot" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
+                                                <input type="text" name="berat_badan" id="berat_badan" placeholder="Berat Badan" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
                                                 </div>
 
                                             </div>
@@ -128,6 +128,8 @@
 
                                                 <div class="card-body">
                                                 <input type="text" name="lemak_tubuh" id="lemak_tubuh" placeholder="Lemak Tubuh" onkeypress="return /[0-9]/i.test(event.key)" class="form-control">
+                                                <br>
+                                                <div class="res_lemak_tubuh" style="font-weight: bold; text-align:left;"></div>
                                                        <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
@@ -201,6 +203,8 @@
                                              
                                                         <input type="text" name="rating_fisik" id="rating_fisik" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Rating Fisik" class="form-control">
                                                         <br>
+                                                        <div class="res_vfr" style="font-weight: bold; text-align:left;"></div>
+                                                        <br>
                                                         <span class="btn btn-primary btn-block"> Keterangan : </span>
                                                         <table class="table table-bordered" style="text-align: center;">
                                                             <thead style="font-weight:bold; font-size:30px;"> 
@@ -225,6 +229,9 @@
 
                                                 <div class="card-body">
                                                 <input type="number" name="masa_otot" id="masa_otot" placeholder="Masa Otot" class="form-control"> 
+                                                <br>
+                                                    <div class="res_otot" style="font-weight: bold; text-align:left;"></div>
+                                                <br>    
                                                 </div>
 
                                             </div>
@@ -241,6 +248,9 @@
 
                                                 <div class="card-body">
                                                 <input type="text" name="bmi" id="bmi" placeholder="BMI" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
+                                                <br>
+                                                    <div class="res_bmi" style="font-weight: bold; text-align:left;"></div>
+                                                <br>   
                                                 </div>
 
                                             </div>
@@ -263,6 +273,10 @@
                                                             <option value="1">Cara Sehat & Langsing</option> 
                                                             <option value="2">Cara Gemuk</option> 
                                                         </select>
+
+                                                        <br>
+                                                            <div class="res_kalori" style="font-weight: bold; text-align:left;"></div>
+                                                        <br>   
                                                 </div>
 
                                             </div>
@@ -278,12 +292,7 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                        <select name="usia_sel" id="usia_sel" class="form-control">
-                                                            <option value="">--Pilih--</option>
-                                                            <option value="1"> < Muda</option>
-                                                            <option value="2"> = Umur </option>
-                                                            <option value="3"> > Tua</option> 
-                                                        </select>
+                                                <input type="text" name="usia_sel" id="usia_sel" placeholder="Usia Sel" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"> 
                                                 </div>
 
                                             </div>
@@ -486,7 +495,11 @@
     </div>
 
   <script>  
-
+        $('.res_lemak_tubuh').hide();
+        $('.res_vfr').hide();
+        $('.res_otot').hide();
+        $('.res_bmi').hide();
+        $('.res_kalori').hide();
         $.fn.pressEnter = function(fn) {  
         
         return this.each(function() {  
@@ -502,136 +515,115 @@
 
       
         $("#kalori_val").pressEnter(function(){ 
+            $('.res_kalori').show().removeClass('btn btn-danger btn-block'); 
             var jenkel = $("#jenkel").val(); 
             var kalori_val = $(this).val();
 
-            if(jenkel == '' || jenkel == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Jenis Kelamin Belum Anda Isi...!'
-                })
+            if(kalori_val == '' || kalori_val == null){
+                $('.res_kalori').addClass('btn btn-danger btn-block').html('Kalori Belum Anda Isi...!');
+     
+            }else if(jenkel == '' || jenkel == null){
+                $('.res_kalori').addClass('btn btn-danger btn-block').html('Jenis Kelamin Belum Anda Isi...!');
+      
             }else{
                 $.ajax({
                     url:"<?php echo base_url('calculate/kalori_service'); ?>",
                     data:{kalori_val:kalori_val,jenkel:jenkel},
                     type:"POST",
                     success:function(response){  
-                        var resp = JSON.parse(response);
-                        console.log(resp.jenkel);
+                        var resp = JSON.parse(response); 
                         $("#kalori").val(resp.option); 
+                        $('.res_kalori').addClass(resp.class).html('Hasil Timbangan Anda : '+resp.timbangan+'<br />  Keterangan : '+resp.keterangan+' -  '+resp.title).removeClass(resp.class);
                     }
                 })
             }
         });
+        
         $("#lemak_tubuh").pressEnter(function(){
+
+            $('.res_lemak_tubuh').show().removeClass('btn btn-danger btn-block'); 
             var usia = $("#usia").val();
             var jenkel = $("#jenkel").val(); 
             var lemak_tubuh = $(this).val();
 
             if(usia == '' || usia == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Usia Belum Anda Isi...!'
-                })
-                usia.focus();
+                $('.res_lemak_tubuh').addClass('btn btn-danger btn-block').html('Usia Belum Anda Isi...!'); 
             }else if(jenkel == '' || jenkel == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Jenis Kelamin Belum Anda Isi...!'
-                })
+                $('.res_lemak_tubuh').addClass('btn btn-danger btn-block').html('Jenis Kelamin Belum Anda Isi...!');
             }else{
+          
                 $.ajax({
                     url:"<?php echo base_url('calculate/lemak_tubuh_service'); ?>",
                     data:{usia:usia,jenkel:jenkel,lemak_tubuh:lemak_tubuh},
                     type:"POST",
-                    success:function(response){
-                        var resp = JSON.parse(response);
-                       
-                        Swal.fire({
-                        icon:  resp.icon,
-                        title:  resp.title,  
-                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' % </b>' +
-                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
-                        }) 
-                    }
-                })
+                    success:function(response){ 
+                        var resp = JSON.parse(response); 
+                        $('.res_lemak_tubuh').addClass(resp.class).html('Hasil Timbangan Anda : '+resp.timbangan+'<br />  Keterangan : '+resp.keterangan).removeClass(resp.class);
+                   
+                    },
+                     
+                });
+                
             }
             
         });
 
 
         $("#rating_fisik").pressEnter(function(){
-          
+            $('.res_vfr').show().removeClass('btn btn-danger btn-block'); 
             var rating_fisik = $(this).val();
- 
+            if(rating_fisik == '' || rating_fisik == null){
+                $('.res_vfr').addClass('btn btn-danger btn-block').html('Rating fisik belum anda isi...!');
+            }else{
                 $.ajax({
                     url:"<?php echo base_url('calculate/rating_fisik_service'); ?>",
                     data:{rating_fisik:rating_fisik},
                     type:"POST",
                     success:function(response){
-                        var resp = JSON.parse(response);
-                       
-                        Swal.fire({
-                        icon:  resp.icon,
-                        title:  resp.title,  
-                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' </b>' +
-                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
-                        }) 
+                        var resp = JSON.parse(response); 
+                        $('.res_vfr').addClass(resp.class).html('Hasil Timbangan Anda : '+resp.timbangan+'<br />  Keterangan : '+resp.keterangan).removeClass(resp.class);
+                    
                     }
-                })
-             
+                });
+            } 
         });
 
+
         $("#masa_otot").pressEnter(function(){
+            $('.res_otot').show().removeClass('btn btn-danger btn-block'); 
             var jenkel = $("#jenkel").val();
             var masa_otot = $(this).val();
             
             if(jenkel == '' || jenkel == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Jenis Kelamin Belum Anda Isi...!'
-                })
+                $('.res_otot').addClass('btn btn-danger btn-block').html('Jenis Kelamin Belum Anda Isi...!');
+            }else if(masa_otot == '' || masa_otot == null){
+                $('.res_otot').addClass('btn btn-danger btn-block').html('Masa Otot Belum Anda Isi...!');
             }else{
                 $.ajax({
                   url:"<?php echo base_url('calculate/masa_otot_service'); ?>",
                   data:{masa_otot:masa_otot,jenkel:jenkel},
                   type:"POST",
                   success:function(response){
-                      var resp = JSON.parse(response);
-                     
-                      Swal.fire({
-                      icon:  resp.icon,
-                      title:  resp.title,  
-                      html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' </b>' +
-                              '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
-                      }) 
+                    var resp = JSON.parse(response);
+                    $('.res_otot').addClass(resp.class).html('Hasil Timbangan Anda : '+resp.timbangan+'<br />  Keterangan : '+resp.keterangan).removeClass(resp.class);
+                  
                   }
-              })
+              });
             } 
         });
 
         $("#bmi").pressEnter(function(){
+            $('.res_bmi').show().removeClass('btn btn-danger btn-block');  
             var usia = $("#usia").val();
             var jenkel = $("#jenkel").val(); 
             var bmi = $(this).val();
 
             if(usia == '' || usia == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Usia Belum Anda Isi...!'
-                })
-                usia.focus();
+                $('.res_bmi').addClass('btn btn-danger btn-block').html('Jenis Kelamin Belum Anda Isi...!');
             }else if(jenkel == '' || jenkel == null){
-                Swal.fire({
-                icon: 'error',
-                title: 'Perhatian!',
-                text: 'Jenis Kelamin Belum Anda Isi...!'
-                })
+                $('.res_bmi').addClass('btn btn-danger btn-block').html('Jenis Kelamin Belum Anda Isi...!');
+            }else if(bmi == '' || bmi == null){
+                $('.res_bmi').addClass('btn btn-danger btn-block').html('BMI Belum Anda Isi...!');
             }else{
                 $.ajax({
                     url:"<?php echo base_url('calculate/bmi_service'); ?>",
@@ -639,13 +631,8 @@
                     type:"POST",
                     success:function(response){
                         var resp = JSON.parse(response);
+                        $('.res_bmi').addClass(resp.class).html('Hasil Timbangan Anda : '+resp.timbangan+'<br />  Keterangan : '+resp.keterangan).removeClass(resp.class);
                        
-                        Swal.fire({
-                        icon:  resp.icon,
-                        title:  resp.title,  
-                        html: 'Hasil Timbangan Anda : <b>'+resp.timbangan+' % </b>' +
-                                '<br> Keterangan : </br> <b>' +resp.keterangan+'</b>'
-                        }) 
                     }
                 })
             }
@@ -759,23 +746,42 @@
     } 
    
     function Simpan_Data(){ 
-         
-            var formData = new FormData($('#user_form')[0]);   
-            //transaksi dibelakang layar
-            $.ajax({
-                url:"<?php echo base_url(); ?>member/simpan_data",
-                type:"POST",
-                data:formData,
-                contentType:false,  
-                processData:false,   
-                success:function(result){  
-                    $("#defaultModal").modal('hide');
-                    $('#example1').DataTable().ajax.reload(); 
-                    $('#user_form')[0].reset();
-                    toastr.success('Data Berhasil Disimpan'); 
+
+            var container = ['nama','alamat','usia','jenkel','telp','tinggi_badan','berat_badan','lemak_tubuh','kadar_air','rating_fisik','masa_otot','bmi','kalori_val','kalori','usia_sel','masa_tulang','lemak_perut'];
+            var listing = [];
+            i = 0;
+            $.each(container, function( i, vals ) {  
+                if($("#" + vals).val() == ''){
+                    alert('Data '+vals+ ' masih kosong! periksa kembali data anda!'); 
+                    listing[i++] = 0;
+                }else{
+                    listing[i++] = 1;
                 }
+ 
             });
-      
+          
+            if($.inArray(0, listing )){
+                
+            }else{
+                var formData = new FormData($('#user_form')[0]);   
+                //transaksi dibelakang layar
+                $.ajax({
+                    url:"<?php echo base_url(); ?>member/simpan_data",
+                    type:"POST",
+                    data:formData,
+                    contentType:false,  
+                    processData:false,   
+                    success:function(result){  
+                        $("#defaultModal").modal('hide');
+                        $('#example1').DataTable().ajax.reload(); 
+                        $('#user_form')[0].reset();
+                        toastr.success('Data Berhasil Disimpan'); 
+                    }
+                });
+        
+            }
+
+          
       
     }  
     

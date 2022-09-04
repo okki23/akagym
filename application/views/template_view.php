@@ -193,73 +193,7 @@
               </p>
             </a>
           </li>
-          <!-- <li class="nav-header">SETTING</li> -->
-          <!-- <li class="nav-item">
-            <a href="<?php echo base_url('fat_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Fat Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('bmi_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                BMI Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('muscle_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Muscle Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('vfr_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                VFR Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('water_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Water Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('calori_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calori Setting 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('bone_setting'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Bone Setting 
-              </p>
-            </a>
-          </li> 
-          <li class="nav-item">
-            <a href="<?php echo base_url('calculate'); ?>" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Perhitungan Sistem 
-              </p>
-            </a>
-          </li>
-           
-          -->
+       
            
            
         </ul>
