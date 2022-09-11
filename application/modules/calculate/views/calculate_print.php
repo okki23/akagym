@@ -55,17 +55,8 @@
         <td style="font-weight:bold; width:20%;"> Usia Sel </td>
         <td style="font-weight:bold; width:5%;"> : </td>
         <td style="width:75%;"> 
-        <?php 
-            $resp_sel = '';
-            if($trans->usia_sel == 1){
-                $resp_sel = '< Muda';
-            }else if($trans->usia_sel == 2){
-                $resp_sel = '= Umur';
-            }else{
-                $resp_sel = '> Tua';
-            }
-        ?>
-        <?php  echo $resp_sel; ?> </td>
+        
+        <?php  echo $trans->usia_sel; ?> </td>
     </tr>
 </table>
 
